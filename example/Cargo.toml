@@ -1,5 +1,5 @@
 [package]
-name = "xterm-js"
+name = "example"
 version = "0.1.0"
 authors = ["Klas Segeljakt <klasseg@kth.se>"]
 edition = "2018"
@@ -10,17 +10,23 @@ crate-type = ["cdylib", "rlib"]
 [features]
 default = ["console_error_panic_hook"]
 
-
 [dependencies.web-sys]
 version = "0.3.39"
 features = [
-    "HtmlElement",
-    "HtmlTextAreaElement",
-    "MouseEvent",
-    "KeyboardEvent",
+  'Document',
+  'Element',
+  'HtmlElement',
+  'HtmlDivElement',
+  'Node',
+  'Window',
+  'CssStyleDeclaration',
+  'EventTarget',
+  'MessageEvent',
 ]
 
 [dependencies]
+xterm-js = { path = "../", version = "0.1.0" }
+js-sys = "0.3.39"
 wasm-bindgen = "0.2.62"
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
@@ -35,7 +41,6 @@ console_error_panic_hook = { version = "0.1.6", optional = true }
 #
 # Unfortunately, `wee_alloc` requires nightly Rust when targeting wasm for now.
 wee_alloc = { version = "0.4.5", optional = true }
-js-sys = "0.3.39"
 
 [dev-dependencies]
 wasm-bindgen-test = "0.3.12"
