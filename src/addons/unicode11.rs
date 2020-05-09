@@ -1,10 +1,10 @@
-use crate::{ITerminalAddon, Terminal};
+use crate::{TerminalAddon, Terminal};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen(module = "xterm-addon-unicode11")]
 extern "C" {
 
-    #[wasm_bindgen(extends = ITerminalAddon)]
+    #[wasm_bindgen(extends = TerminalAddon)]
     pub type Unicode11Addon;
 
     #[wasm_bindgen(constructor)]

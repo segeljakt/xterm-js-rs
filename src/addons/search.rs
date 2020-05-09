@@ -1,26 +1,27 @@
-use crate::{ITerminalAddon, Terminal};
+use crate::{Terminal, TerminalAddon};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen(module = "xterm-addon-search")]
 extern "C" {
 
-    pub type ISearchOptions;
+    #[wasm_bindgen(js_name = "ISearchOptions")]
+    pub type SearchOptions;
 
     #[wasm_bindgen(method, setter, js_name = "regex")]
-    fn set_regex(this: &ISearchOptions, val: bool);
+    pub fn set_regex(this: &SearchOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "wholeWord")]
-    fn set_whole_word(this: &ISearchOptions, val: bool);
+    pub fn set_whole_word(this: &SearchOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "caseSensitive")]
-    fn set_case_sensitive(this: &ISearchOptions, val: bool);
+    pub fn set_case_sensitive(this: &SearchOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "incremental")]
-    fn set_incremental(this: &ISearchOptions, val: bool);
+    pub fn set_incremental(this: &SearchOptions, val: bool);
 
     // ========================================================================
 
-    #[wasm_bindgen(extends = ITerminalAddon)]
+    #[wasm_bindgen(extends = TerminalAddon)]
     pub type SearchAddon;
 
     #[wasm_bindgen(constructor)]
@@ -36,13 +37,36 @@ extern "C" {
     pub fn find_next(
         this: &SearchAddon,
         term: String,
-        search_options: Option<ISearchOptions>,
+        search_options: Option<SearchOptions>,
     ) -> bool;
 
     #[wasm_bindgen(method, method, js_name = "findPrevious")]
     pub fn find_previous(
         this: &SearchAddon,
         term: String,
-        search_options: Option<ISearchOptions>,
+        search_options: Option<SearchOptions>,
     ) -> bool;
+}
+
+impl SearchOptions {
+
+    pub fn with_regex(&self, val: bool) -> &Self {
+        self.set_regex(val);
+        self
+    }
+
+    pub fn with_whole_word(&self, val: bool) -> &Self {
+        self.set_whole_word(val);
+        self
+    }
+
+    pub fn with_case_sensitive(&self, val: bool) -> &Self {
+        self.set_case_sensitive(val);
+        self
+    }
+
+    pub fn with_incremental(&self, val: bool) -> &Self {
+        self.set_incremental(val);
+        self
+    }
 }

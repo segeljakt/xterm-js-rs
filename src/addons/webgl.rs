@@ -1,11 +1,11 @@
-use crate::{ITerminalAddon, Terminal};
+use crate::{TerminalAddon, Terminal};
 use wasm_bindgen::prelude::*;
 use web_sys::HtmlCanvasElement;
 
 #[wasm_bindgen(module = "xterm-addon-webgl")]
 extern "C" {
 
-    #[wasm_bindgen(extends = ITerminalAddon)]
+    #[wasm_bindgen(extends = TerminalAddon)]
     pub type WebglAddon;
 
     #[wasm_bindgen(method, setter, js_name = "textureAtlas")]

@@ -1,10 +1,10 @@
-use crate::{ITerminalAddon, Terminal};
+use crate::{TerminalAddon, Terminal};
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen(module = "xterm-addon-fit")]
 extern "C" {
 
-    #[wasm_bindgen(extends = ITerminalAddon)]
+    #[wasm_bindgen(extends = TerminalAddon)]
     pub type FitAddon;
 
     #[wasm_bindgen(constructor)]
@@ -20,15 +20,28 @@ extern "C" {
     pub fn fit(this: &FitAddon);
 
     #[wasm_bindgen(method, method, js_name = "proposeDimensions")]
-    pub fn propose_dimensions(this: &FitAddon) -> ITerminalDimensions;
+    pub fn propose_dimensions(this: &FitAddon) -> TerminalDimensions;
 
     // ========================================================================
 
-    pub type ITerminalDimensions;
+    #[wasm_bindgen(js_name = "ITerminalDimensions")]
+    pub type TerminalDimensions;
 
     #[wasm_bindgen(method, setter, js_name = "rows")]
-    pub fn rows(this: &ITerminalDimensions) -> u32;
+    pub fn set_rows(this: &TerminalDimensions, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "cols")]
-    pub fn cols(this: &ITerminalDimensions) -> u32;
+    pub fn set_cols(this: &TerminalDimensions, val: u32);
+}
+
+impl TerminalDimensions {
+    pub fn with_rows(&self, val: u32) -> &Self {
+        self.set_rows(val);
+        self
+    }
+
+    pub fn with_cols(&self, val: u32) -> &Self {
+        self.set_cols(val);
+        self
+    }
 }

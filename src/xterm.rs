@@ -38,6 +38,7 @@ pub enum FontWeight {
     W800 = "800",
     W900 = "900",
 }
+
 #[wasm_bindgen]
 pub enum LogLevel {
     Debug = "debug",
@@ -134,312 +135,338 @@ pub enum ThemeKey {
 #[wasm_bindgen(module = "xterm")]
 extern "C" {
 
-    pub type ITerminalOptions;
+    #[wasm_bindgen(js_name = "ITerminalOptions")]
+    pub type TerminalOptions;
+
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> TerminalOptions;
 
     #[wasm_bindgen(method, setter, js_name = "allowTransparency")]
-    pub fn set_allow_transparency(this: &ITerminalOptions, val: bool);
+    pub fn set_allow_transparency(this: &TerminalOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "bellSound")]
-    pub fn set_bell_sound(this: &ITerminalOptions, val: String);
+    pub fn set_bell_sound(this: &TerminalOptions, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "bellStyle")]
-    pub fn set_bell_style(this: &ITerminalOptions, val: BellStyle);
+    pub fn set_bell_style(this: &TerminalOptions, val: BellStyle);
 
     #[wasm_bindgen(method, setter, js_name = "convertEol")]
-    pub fn set_convert_eol(this: &ITerminalOptions, val: bool);
+    pub fn set_convert_eol(this: &TerminalOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "cols")]
-    pub fn set_cols(this: &ITerminalOptions, val: u32);
+    pub fn set_cols(this: &TerminalOptions, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "cursorBlink")]
-    pub fn set_cursor_blink(this: &ITerminalOptions, val: bool);
+    pub fn set_cursor_blink(this: &TerminalOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "cursorStyle")]
-    pub fn set_cursor_style(this: &ITerminalOptions, val: CursorStyle);
+    pub fn set_cursor_style(this: &TerminalOptions, val: CursorStyle);
 
     #[wasm_bindgen(method, setter, js_name = "cursorWidth")]
-    pub fn set_cursor_width(this: &ITerminalOptions, val: u32);
+    pub fn set_cursor_width(this: &TerminalOptions, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "disableStdin")]
-    pub fn set_disable_stdin(this: &ITerminalOptions, val: bool);
+    pub fn set_disable_stdin(this: &TerminalOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "drawBoldTextInBrightColors")]
-    pub fn set_draw_bold_text_in_bright_colors(this: &ITerminalOptions, val: bool);
+    pub fn set_draw_bold_text_in_bright_colors(this: &TerminalOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "fastScrollModifier")]
-    pub fn set_fast_scroll_modifier(this: &ITerminalOptions, val: FastScrollModifier);
+    pub fn set_fast_scroll_modifier(this: &TerminalOptions, val: FastScrollModifier);
 
     #[wasm_bindgen(method, setter, js_name = "fastScrollSensitivity")]
-    pub fn set_fast_scroll_sensitivity(this: &ITerminalOptions, val: u32);
+    pub fn set_fast_scroll_sensitivity(this: &TerminalOptions, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "fontSize")]
-    pub fn set_font_size(this: &ITerminalOptions, val: u32);
+    pub fn set_font_size(this: &TerminalOptions, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "fontFamily")]
-    pub fn set_font_family(this: &ITerminalOptions, val: String);
+    pub fn set_font_family(this: &TerminalOptions, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "fontWeight")]
-    pub fn set_font_weight(this: &ITerminalOptions, val: FontWeight);
+    pub fn set_font_weight(this: &TerminalOptions, val: FontWeight);
 
     #[wasm_bindgen(method, setter, js_name = "fontWeightBold")]
-    pub fn set_font_weight_bold(this: &ITerminalOptions, val: FontWeight);
+    pub fn set_font_weight_bold(this: &TerminalOptions, val: FontWeight);
 
     #[wasm_bindgen(method, setter, js_name = "letterSpacing")]
-    pub fn set_letter_spacing(this: &ITerminalOptions, val: u32);
+    pub fn set_letter_spacing(this: &TerminalOptions, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "lineHeight")]
-    pub fn set_line_height(this: &ITerminalOptions, val: u32);
+    pub fn set_line_height(this: &TerminalOptions, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "linkTooltipHoverDuration")]
-    pub fn set_link_tooltip_hover_duration(this: &ITerminalOptions, val: u32);
+    pub fn set_link_tooltip_hover_duration(this: &TerminalOptions, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "logLevel")]
-    pub fn set_log_level(this: &ITerminalOptions, val: LogLevel);
+    pub fn set_log_level(this: &TerminalOptions, val: LogLevel);
 
     #[wasm_bindgen(method, setter, js_name = "macOptionIsMeta")]
-    pub fn set_mac_option_is_meta(this: &ITerminalOptions, val: bool);
+    pub fn set_mac_option_is_meta(this: &TerminalOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "macOptionClickForcesSelection")]
-    pub fn set_mac_option_click_forces_selection(this: &ITerminalOptions, val: bool);
+    pub fn set_mac_option_click_forces_selection(this: &TerminalOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "minimumContrastRatio")]
-    pub fn set_minimum_contrast_ratio(this: &ITerminalOptions, val: u32);
+    pub fn set_minimum_contrast_ratio(this: &TerminalOptions, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "rendererType")]
-    pub fn set_renderer_type(this: &ITerminalOptions, val: RendererType);
+    pub fn set_renderer_type(this: &TerminalOptions, val: RendererType);
 
     #[wasm_bindgen(method, setter, js_name = "rightClickSelectsWord")]
-    pub fn set_right_click_selects_word(this: &ITerminalOptions, val: bool);
+    pub fn set_right_click_selects_word(this: &TerminalOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "rows")]
-    pub fn set_rows(this: &ITerminalOptions, val: u32);
+    pub fn set_rows(this: &TerminalOptions, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "screenReaderMode")]
-    pub fn set_screen_reader_mode(this: &ITerminalOptions, val: bool);
+    pub fn set_screen_reader_mode(this: &TerminalOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "scrollback")]
-    pub fn set_scrollback(this: &ITerminalOptions, val: u32);
+    pub fn set_scrollback(this: &TerminalOptions, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "scrollSensitivity")]
-    pub fn set_scroll_sensitivity(this: &ITerminalOptions, val: u32);
+    pub fn set_scroll_sensitivity(this: &TerminalOptions, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "tabStopWidth")]
-    pub fn set_tab_stop_width(this: &ITerminalOptions, val: u32);
+    pub fn set_tab_stop_width(this: &TerminalOptions, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "theme")]
-    pub fn set_theme(this: &ITerminalOptions, val: ITheme);
+    pub fn set_theme(this: &TerminalOptions, val: Theme);
 
     #[wasm_bindgen(method, setter, js_name = "windowsMode")]
-    pub fn set_windows_mode(this: &ITerminalOptions, val: bool);
+    pub fn set_windows_mode(this: &TerminalOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "wordSeparator")]
-    pub fn set_word_separator(this: &ITerminalOptions, val: String);
+    pub fn set_word_separator(this: &TerminalOptions, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "windowOptions")]
-    pub fn set_window_options(this: &ITerminalOptions, val: IWindowOptions);
+    pub fn set_window_options(this: &TerminalOptions, val: WindowOptions);
 
     // ========================================================================
 
-    pub type ITheme;
+    #[wasm_bindgen(js_name = "ITheme")]
+    pub type Theme;
+
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> Theme;
 
     #[wasm_bindgen(method, setter, js_name = "foreground")]
-    pub fn set_foreground(this: &ITheme, val: String);
+    pub fn set_foreground(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "background")]
-    pub fn set_background(this: &ITheme, val: String);
+    pub fn set_background(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "cursor")]
-    pub fn set_cursor(this: &ITheme, val: String);
+    pub fn set_cursor(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "cursorAccent")]
-    pub fn set_cursor_accent(this: &ITheme, val: String);
+    pub fn set_cursor_accent(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "selection")]
-    pub fn set_selection(this: &ITheme, val: String);
+    pub fn set_selection(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "black")]
-    pub fn set_black(this: &ITheme, val: String);
+    pub fn set_black(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "red")]
-    pub fn set_red(this: &ITheme, val: String);
+    pub fn set_red(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "green")]
-    pub fn set_green(this: &ITheme, val: String);
+    pub fn set_green(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "yellow")]
-    pub fn set_yellow(this: &ITheme, val: String);
+    pub fn set_yellow(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "blue")]
-    pub fn set_blue(this: &ITheme, val: String);
+    pub fn set_blue(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "magenta")]
-    pub fn set_magenta(this: &ITheme, val: String);
+    pub fn set_magenta(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "cyan")]
-    pub fn set_cyan(this: &ITheme, val: String);
+    pub fn set_cyan(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "white")]
-    pub fn set_white(this: &ITheme, val: String);
+    pub fn set_white(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "brightBlack")]
-    pub fn set_bright_black(this: &ITheme, val: String);
+    pub fn set_bright_black(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "brightRed")]
-    pub fn set_bright_red(this: &ITheme, val: String);
+    pub fn set_bright_red(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "brightGreen")]
-    pub fn set_bright_green(this: &ITheme, val: String);
+    pub fn set_bright_green(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "brightYellow")]
-    pub fn set_bright_yellow(this: &ITheme, val: String);
+    pub fn set_bright_yellow(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "brightBlue")]
-    pub fn set_bright_blue(this: &ITheme, val: String);
+    pub fn set_bright_blue(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "brightMagenta")]
-    pub fn set_bright_magenta(this: &ITheme, val: String);
+    pub fn set_bright_magenta(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "brightCyan")]
-    pub fn set_bright_cyan(this: &ITheme, val: String);
+    pub fn set_bright_cyan(this: &Theme, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "brightWhite")]
-    pub fn set_bright_white(this: &ITheme, val: String);
+    pub fn set_bright_white(this: &Theme, val: String);
 
     // ========================================================================
 
-    pub type ILinkMatcherOptions;
+    #[wasm_bindgen(js_name = "ILinkMatcherOptions")]
+    pub type LinkMatcherOptions;
 
-    #[wasm_bindgen(method, getter, js_name = "matchIndex")]
-    pub fn get_match_index(this: &ILinkMatcherOptions) -> Option<u32>;
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> LinkMatcherOptions;
 
-    #[wasm_bindgen(method, getter, js_name = "validationCallback")]
-    pub fn get_validation_callback(this: &ILinkMatcherOptions) -> Option<Function>; // (uri: String, callback: (is_valid: bool) => void) => void;
+    #[wasm_bindgen(method, setter, js_name = "matchIndex")]
+    pub fn set_match_index(this: &LinkMatcherOptions, val: u32);
 
-    #[wasm_bindgen(method, getter, js_name = "tooltipCallback")]
-    pub fn get_tooltip_callback(this: &ILinkMatcherOptions) -> Option<Function>; // (event: MouseEvent, uri: String, location: IViewportRange) => bool | void;
+    #[wasm_bindgen(method, setter, js_name = "validationCallback")]
+    pub fn set_validation_callback(this: &LinkMatcherOptions, val: Function);
+    // (uri: String, callback: (is_valid: bool) => void) => void;
 
-    #[wasm_bindgen(method, getter, js_name = "leaveCallback")]
-    pub fn get_leave_callback(this: &ILinkMatcherOptions) -> Option<Function>; // () => void;
+    #[wasm_bindgen(method, setter, js_name = "tooltipCallback")]
+    pub fn set_tooltip_callback(this: &LinkMatcherOptions, val: Function);
+    // (event: MouseEvent, uri: String, location: ViewportRange) => bool | void;
 
-    #[wasm_bindgen(method, getter, js_name = "priority")]
-    pub fn get_priority(this: &ILinkMatcherOptions) -> Option<u32>;
+    #[wasm_bindgen(method, setter, js_name = "leaveCallback")]
+    pub fn set_leave_callback(this: &LinkMatcherOptions, val: Function);
+    // () => void;
 
-    #[wasm_bindgen(method, getter, js_name = "willLinkActivate")]
-    pub fn get_will_link_activate(this: &ILinkMatcherOptions) -> Option<Function>; // (event: MouseEvent, uri: String) => bool;
+    #[wasm_bindgen(method, setter, js_name = "priority")]
+    pub fn set_priority(this: &LinkMatcherOptions, val: u32);
+
+    #[wasm_bindgen(method, setter, js_name = "willLinkActivate")]
+    pub fn set_will_link_activate(this: &LinkMatcherOptions, val: Function);
+    // (event: MouseEvent, uri: String) => bool;
 
     // ========================================================================
 
-    pub type IDisposable;
+    #[wasm_bindgen(js_name = "IDisposable")]
+    pub type Disposable;
 
     #[wasm_bindgen(method, js_name = "dispose")]
-    pub fn dispose(this: &IDisposable);
+    pub fn dispose(this: &Disposable);
 
     // ========================================================================
 
-    pub type IEvent;
+    #[wasm_bindgen(js_name = "IEvent")]
+    pub type Event;
 
-    //   export interface IEvent<T, U = void> {
-    //     (listener: (arg1: T, arg2: U) => any): IDisposable;
+    //   export interface Event<T, U = void> {
+    //     (listener: (arg1: T, arg2: U) => any): Disposable;
     //   }
 
     // ========================================================================
 
-    #[wasm_bindgen(extends = IDisposable)]
-    pub type IMarker;
+    #[wasm_bindgen(extends = Disposable, js_name = "IMarker")]
+    pub type Marker;
 
     #[wasm_bindgen(method, getter, js_name = "id")]
-    pub fn get_id(this: &IMarker) -> u32;
+    pub fn get_id(this: &Marker) -> u32;
 
     #[wasm_bindgen(method, getter, js_name = "isDisposed")]
-    pub fn get_is_disposed(this: &IMarker) -> bool;
+    pub fn get_is_disposed(this: &Marker) -> bool;
 
     #[wasm_bindgen(method, getter, js_name = "line")]
-    pub fn get_line(this: &IMarker) -> u32;
+    pub fn get_line(this: &Marker) -> u32;
 
     // ========================================================================
 
-    pub type ILocalizableStrings;
+    #[wasm_bindgen(js_name = "ILocalizableStrings")]
+    pub type LocalizableStrings;
 
     #[wasm_bindgen(method, setter, js_name = "promptLabel")]
-    pub fn set_prompt_label(this: &ILocalizableStrings, val: String);
+    pub fn set_prompt_label(this: &LocalizableStrings, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "tooMuchOutput")]
-    pub fn set_too_much_output(this: &ILocalizableStrings, val: String);
+    pub fn set_too_much_output(this: &LocalizableStrings, val: String);
 
     // ========================================================================
 
-    pub type IWindowOptions;
+    #[wasm_bindgen(js_name = "IWindowOptions")]
+    pub type WindowOptions;
+
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> WindowOptions;
 
     #[wasm_bindgen(method, setter, js_name = "restoreWin")]
-    pub fn set_restore_win(this: &IWindowOptions, val: bool);
+    pub fn set_restore_win(this: &WindowOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "minimizeWin")]
-    pub fn set_minimize_win(this: &IWindowOptions, val: bool);
+    pub fn set_minimize_win(this: &WindowOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "setWinPosition")]
-    pub fn set_win_position(this: &IWindowOptions, val: bool);
+    pub fn set_win_position(this: &WindowOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "setWinSizePixels")]
-    pub fn set_win_size_pixels(this: &IWindowOptions, val: bool);
+    pub fn set_win_size_pixels(this: &WindowOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "raiseWin")]
-    pub fn set_raise_win(this: &IWindowOptions, val: bool);
+    pub fn set_raise_win(this: &WindowOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "lowerWin")]
-    pub fn set_lower_win(this: &IWindowOptions, val: bool);
+    pub fn set_lower_win(this: &WindowOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "refreshWin")]
-    pub fn set_refresh_win(this: &IWindowOptions, val: bool);
+    pub fn set_refresh_win(this: &WindowOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "setWinSizeChars")]
-    pub fn set_set_win_size_chars(this: &IWindowOptions, val: bool);
+    pub fn set_win_size_chars(this: &WindowOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "maximizeWin")]
-    pub fn set_maximize_win(this: &IWindowOptions, val: bool);
+    pub fn set_maximize_win(this: &WindowOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "fullscreenWin")]
-    pub fn set_fullscreen_win(this: &IWindowOptions, val: bool);
+    pub fn set_fullscreen_win(this: &WindowOptions, val: bool);
 
     #[wasm_bindgen(method, getter, js_name = "getWinState")]
-    pub fn get_win_state(this: &IWindowOptions) -> Option<bool>;
+    pub fn get_win_state(this: &WindowOptions) -> Option<bool>;
 
     #[wasm_bindgen(method, getter, js_name = "getWinPosition")]
-    pub fn get_win_position(this: &IWindowOptions) -> Option<bool>;
+    pub fn get_win_position(this: &WindowOptions) -> Option<bool>;
 
     #[wasm_bindgen(method, getter, js_name = "getWinSizePixels")]
-    pub fn get_win_size_pixels(this: &IWindowOptions) -> Option<bool>;
+    pub fn get_win_size_pixels(this: &WindowOptions) -> Option<bool>;
 
     #[wasm_bindgen(method, getter, js_name = "getScreenSizePixels")]
-    pub fn get_screen_size_pixels(this: &IWindowOptions) -> Option<bool>;
+    pub fn get_screen_size_pixels(this: &WindowOptions) -> Option<bool>;
 
     #[wasm_bindgen(method, getter, js_name = "getCellSizePixels")]
-    pub fn get_cell_size_pixels(this: &IWindowOptions) -> Option<bool>;
+    pub fn get_cell_size_pixels(this: &WindowOptions) -> Option<bool>;
 
     #[wasm_bindgen(method, getter, js_name = "getWinSizeChars")]
-    pub fn get_win_size_chars(this: &IWindowOptions) -> Option<bool>;
+    pub fn get_win_size_chars(this: &WindowOptions) -> Option<bool>;
 
     #[wasm_bindgen(method, getter, js_name = "getScreenSizeChars")]
-    pub fn get_screen_size_chars(this: &IWindowOptions) -> Option<bool>;
+    pub fn get_screen_size_chars(this: &WindowOptions) -> Option<bool>;
 
     #[wasm_bindgen(method, getter, js_name = "getIconTitle")]
-    pub fn get_icon_title(this: &IWindowOptions) -> Option<bool>;
+    pub fn get_icon_title(this: &WindowOptions) -> Option<bool>;
 
     #[wasm_bindgen(method, getter, js_name = "getWinTitle")]
-    pub fn get_win_title(this: &IWindowOptions) -> Option<bool>;
+    pub fn get_win_title(this: &WindowOptions) -> Option<bool>;
 
     #[wasm_bindgen(method, setter, js_name = "pushTitle")]
-    pub fn set_push_title(this: &IWindowOptions, val: bool);
+    pub fn set_push_title(this: &WindowOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "popTitle")]
-    pub fn set_pop_title(this: &IWindowOptions, val: bool);
+    pub fn set_pop_title(this: &WindowOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "setWinLines")]
-    pub fn set_win_lines(this: &IWindowOptions, val: bool);
+    pub fn set_win_lines(this: &WindowOptions, val: bool);
 
     // ========================================================================
 
-    #[wasm_bindgen(extends = IDisposable)]
+    #[wasm_bindgen(extends = Disposable)]
     pub type Terminal;
+
+    #[wasm_bindgen(constructor)]
+    pub fn new(options: Option<TerminalOptions>) -> Terminal;
 
     #[wasm_bindgen(method, getter, js_name = "element")]
     pub fn get_element(this: &Terminal) -> HtmlElement;
@@ -454,22 +481,45 @@ extern "C" {
     pub fn get_cols(this: &Terminal) -> u32;
 
     #[wasm_bindgen(method, getter, js_name = "buffer")]
-    pub fn get_buffer(this: &Terminal) -> IBufferNamespace;
+    pub fn get_buffer(this: &Terminal) -> BufferNamespace;
 
     #[wasm_bindgen(method, getter, js_name = "markers")]
-    pub fn get_markers(this: &Terminal) -> Box<[JsValue]>; // Box<[IMarker]>
+    pub fn get_markers(this: &Terminal) -> Box<[JsValue]>; // Box<[Marker]>
 
     #[wasm_bindgen(method, getter, js_name = "parser")]
-    pub fn get_parser(this: &Terminal) -> IParser;
+    pub fn get_parser(this: &Terminal) -> Parser;
 
     #[wasm_bindgen(method, getter, js_name = "unicode")]
-    pub fn get_unicode(this: &Terminal) -> IUnicodeHandling;
+    pub fn get_unicode(this: &Terminal) -> UnicodeHandling;
 
     #[wasm_bindgen(static_method_of = Terminal, js_name = "strings")]
-    pub fn get_strings() -> ILocalizableStrings;
+    pub fn get_strings() -> LocalizableStrings;
 
-    #[wasm_bindgen(constructor)]
-    pub fn new(options: Option<ITerminalOptions>) -> Terminal;
+    // ========================================================================
+
+    #[wasm_bindgen(method, js_name = "onBinary")]
+    pub fn on_binary(
+        this: &Terminal,
+        f: &Function, // Event<String>
+    ) -> Disposable;
+
+    //---------------
+
+    #[wasm_bindgen(method, js_name = "onCursorMove")]
+    pub fn on_cursor_move(
+        this: &Terminal,
+        f: &Function, // Event<void>
+    ) -> Disposable;
+
+    //---------------
+
+    #[wasm_bindgen(method, js_name = "onData")]
+    pub fn on_data(
+        this: &Terminal,
+        f: &Function, // Event<String>
+    ) -> Disposable;
+
+    //---------------
 
     pub type OnKeyEvent;
 
@@ -479,65 +529,69 @@ extern "C" {
     #[wasm_bindgen(method, getter, js_name = "domEvent")]
     pub fn dom_event(this: &OnKeyEvent) -> KeyboardEvent;
 
-    #[wasm_bindgen(method, js_name = "onBinary")]
-    pub fn on_binary(
-        this: &Terminal,
-        f: &Function, // IEvent<String>
-    ) -> IDisposable;
-
-    #[wasm_bindgen(method, js_name = "onCursorMove")]
-    pub fn on_cursor_move(
-        this: &Terminal,
-        f: &Function, // IEvent<void>
-    ) -> IDisposable;
-
-    #[wasm_bindgen(method, js_name = "onData")]
-    pub fn on_data(
-        this: &Terminal,
-        f: &Function, // IEvent<String>
-    ) -> IDisposable;
-
     #[wasm_bindgen(method, js_name = "onKey")]
     pub fn on_key(
         this: &Terminal,
-        f: &Function, // IEvent<{key: String, dom_event: KeyboardEvent}>
-    ); // -> IDisposable
+        f: &Function, // Event<{key: String, dom_event: KeyboardEvent}>
+    ) -> Disposable;
+
+    //---------------
 
     #[wasm_bindgen(method, js_name = "onLineFeed")]
     pub fn on_line_feed(
         this: &Terminal,
-        f: &Function, // IEvent<void>
-    ) -> IDisposable;
+        f: &Function, // Event<void>
+    ) -> Disposable;
+
+    //---------------
 
     #[wasm_bindgen(method, js_name = "onScroll")]
     pub fn on_scroll(
         this: &Terminal,
-        f: &Function, // IEvent<u32>
-    ) -> IDisposable;
+        f: &Function, // Event<u32>
+    ) -> Disposable;
+
+    //---------------
 
     #[wasm_bindgen(method, js_name = "onSelectionChange")]
     pub fn on_selection_change(
         this: &Terminal,
-        f: &Function, // IEvent<void>
-    ) -> IDisposable;
+        f: &Function, // Event<void>
+    ) -> Disposable;
+
+    //---------------
+
+    pub type OnRenderEvent;
+
+    #[wasm_bindgen(method, getter, js_name = "start")]
+    pub fn start(this: &OnRenderEvent) -> u32;
+
+    #[wasm_bindgen(method, getter, js_name = "end")]
+    pub fn end(this: &OnRenderEvent) -> u32;
 
     #[wasm_bindgen(method, js_name = "onRender")]
     pub fn on_render(
         this: &Terminal,
-        f: &Function, // IEvent<{start: u32, end: u32}>
-    ) -> IDisposable;
+        f: &Function, // Event<{start: u32, end: u32}>
+    ) -> Disposable;
+
+    //---------------
 
     #[wasm_bindgen(method, js_name = "onResize")]
     pub fn on_resize(
         this: &Terminal,
-        f: &Function, // IEvent<{cols: u32, rows: u32}>
-    ) -> IDisposable;
+        f: &Function, // Event<{cols: u32, rows: u32}>
+    ) -> Disposable;
+
+    //---------------
 
     #[wasm_bindgen(method, js_name = "onTitleChange")]
     pub fn on_title_change(
         this: &Terminal,
-        f: &Function, // IEvent<String>
-    ) -> IDisposable;
+        f: &Function, // Event<String>
+    ) -> Disposable;
+
+    //---------------
 
     #[wasm_bindgen(method, js_name = "blur")]
     pub fn blur(this: &Terminal);
@@ -562,14 +616,14 @@ extern "C" {
         this: &Terminal,
         regex: RegExp,
         handler: &Function, // (event: MouseEvent, uri: String) => void
-        options: Option<ILinkMatcherOptions>,
+        options: Option<LinkMatcherOptions>,
     ) -> u32;
 
     #[wasm_bindgen(method, js_name = "deregisterLinkMatcher")]
     pub fn deregister_link_matcher(this: &Terminal, matcher_id: u32);
 
     #[wasm_bindgen(method, js_name = "registerLinkProvider")]
-    pub fn register_link_provider(this: &Terminal, link_provider: ILinkProvider) -> IDisposable;
+    pub fn register_link_provider(this: &Terminal, link_provider: LinkProvider) -> Disposable;
 
     #[wasm_bindgen(method, js_name = "registerCharacterJoiner")]
     pub fn register_character_joiner(
@@ -581,10 +635,10 @@ extern "C" {
     pub fn deregister_character_joiner(this: &Terminal, joiner_id: u32);
 
     #[wasm_bindgen(method, js_name = "registerMarker")]
-    pub fn register_marker(this: &Terminal, cursorYOffset: u32) -> Option<IMarker>;
+    pub fn register_marker(this: &Terminal, cursorYOffset: u32) -> Option<Marker>;
 
     #[wasm_bindgen(method, js_name = "addMarker")]
-    pub fn add_marker(this: &Terminal, cursorYOffset: u32) -> Option<IMarker>;
+    pub fn add_marker(this: &Terminal, cursorYOffset: u32) -> Option<Marker>;
 
     #[wasm_bindgen(method, js_name = "hasSelection")]
     pub fn has_selection(this: &Terminal) -> bool;
@@ -593,7 +647,7 @@ extern "C" {
     pub fn get_selection(this: &Terminal) -> String;
 
     #[wasm_bindgen(method, js_name = "getSelectionPosition")]
-    pub fn get_selection_position(this: &Terminal) -> Option<ISelectionPosition>;
+    pub fn get_selection_position(this: &Terminal) -> Option<SelectionPosition>;
 
     #[wasm_bindgen(method, js_name = "clearSelection")]
     pub fn clear_selection(this: &Terminal);
@@ -686,7 +740,7 @@ extern "C" {
     pub fn set_number_option(this: &Terminal, key: NumberOptionKey, value: u32);
 
     #[wasm_bindgen(method, js_name = "setOption")]
-    pub fn set_theme_option(this: &Terminal, key: ThemeKey, value: ITheme);
+    pub fn set_theme_option(this: &Terminal, key: ThemeKey, value: Theme);
 
     #[wasm_bindgen(method, js_name = "setOption")]
     pub fn set_any_option(this: &Terminal, key: String, value: JsValue);
@@ -698,173 +752,204 @@ extern "C" {
     pub fn reset(this: &Terminal);
 
     #[wasm_bindgen(method, js_name = "loadAddon")]
-    pub fn load_addon(this: &Terminal, addon: ITerminalAddon);
+    pub fn load_addon(this: &Terminal, addon: TerminalAddon);
 
     // ========================================================================
 
-    #[wasm_bindgen(extends = IDisposable)]
-    pub type ITerminalAddon;
+    #[wasm_bindgen(extends = Disposable, js_name = "ITerminalAddon")]
+    pub type TerminalAddon;
 
     #[wasm_bindgen(method)]
-    pub fn activate(this: &ITerminalAddon, terminal: Terminal);
+    pub fn activate(this: &TerminalAddon, terminal: Terminal);
 
-    pub type ISelectionPosition;
+    // ========================================================================
+
+    #[wasm_bindgen(js_name = "ISelectionPosition")]
+    pub type SelectionPosition;
 
     #[wasm_bindgen(method, getter, js_name = "startColumn")]
-    pub fn start_column(this: &ISelectionPosition) -> u32;
+    pub fn start_column(this: &SelectionPosition) -> u32;
 
     #[wasm_bindgen(method, getter, js_name = "startRow")]
-    pub fn start_row(this: &ISelectionPosition) -> u32;
+    pub fn start_row(this: &SelectionPosition) -> u32;
 
     #[wasm_bindgen(method, getter, js_name = "endColumn")]
-    pub fn end_column(this: &ISelectionPosition) -> u32;
+    pub fn end_column(this: &SelectionPosition) -> u32;
 
     #[wasm_bindgen(method, getter, js_name = "endRow")]
-    pub fn end_row(this: &ISelectionPosition) -> u32;
+    pub fn end_row(this: &SelectionPosition) -> u32;
 
     // ========================================================================
 
-    pub type IViewportRange;
+    #[wasm_bindgen(js_name = "IViewportRange")]
+    pub type ViewportRange;
+
+    #[wasm_bindgen(method, getter, js_name = "start")]
+    pub fn get_start(this: &ViewportRange) -> ViewportRangePosition;
+
+    #[wasm_bindgen(method, getter, js_name = "end")]
+    pub fn get_end(this: &ViewportRange) -> ViewportRangePosition;
 
     #[wasm_bindgen(method, setter, js_name = "start")]
-    pub fn set_start(this: &IViewportRange, val: IViewportRangePosition);
+    pub fn set_start(this: &ViewportRange, val: ViewportRangePosition);
 
     #[wasm_bindgen(method, setter, js_name = "end")]
-    pub fn set_end(this: &IViewportRange, val: IViewportRangePosition);
+    pub fn set_end(this: &ViewportRange, val: ViewportRangePosition);
 
     // ========================================================================
 
-    pub type IViewportRangePosition;
+    #[wasm_bindgen(js_name = "IViewportRangePosition")]
+    pub type ViewportRangePosition;
 
     #[wasm_bindgen(method, setter, js_name = "x")]
-    pub fn set_x(this: &IViewportRangePosition, val: u32);
+    pub fn set_x(this: &ViewportRangePosition, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "y")]
-    pub fn set_y(this: &IViewportRangePosition, val: u32);
+    pub fn set_y(this: &ViewportRangePosition, val: u32);
 
     // ========================================================================
 
-    pub type ILinkProvider;
+    #[wasm_bindgen(js_name = "ILinkProvider")]
+    pub type LinkProvider;
+
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> LinkProvider;
 
     #[wasm_bindgen(method, js_name = "provideLinks")]
     pub fn provide_links(
-        this: &ILinkProvider,
+        this: &LinkProvider,
         buffer_lineu32: u32,
-        callback: &Function, // (links: ILink[] | undefined) => void
+        callback: &Function, // (links: Link[] | undefined) => void
     );
 
     // ========================================================================
 
-    pub type ILink;
+    #[wasm_bindgen(js_name = "ILink")]
+    pub type Link;
+
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> Link;
 
     #[wasm_bindgen(method, setter, js_name = "range")]
-    pub fn set_range(this: &ILink, val: IBufferRange);
+    pub fn set_range(this: &Link, val: BufferRange);
 
     #[wasm_bindgen(method, setter, js_name = "text")]
-    pub fn set_text(this: &ILink, val: String);
+    pub fn set_text(this: &Link, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "decorations")]
-    pub fn set_decorations(this: &ILink, val: ILinkDecorations);
+    pub fn set_decorations(this: &Link, val: LinkDecorations);
 
     #[wasm_bindgen(method, js_name = "activate")]
-    pub fn activate(this: &ILink, event: MouseEvent, text: String);
+    pub fn activate(this: &Link, event: MouseEvent, text: String);
 
     #[wasm_bindgen(method, js_name = "hover")]
-    pub fn hover(this: &ILink, event: MouseEvent, text: String);
+    pub fn hover(this: &Link, event: MouseEvent, text: String);
 
     #[wasm_bindgen(method, js_name = "leave")]
-    pub fn leave(this: &ILink, event: MouseEvent, text: String);
+    pub fn leave(this: &Link, event: MouseEvent, text: String);
 
     // ========================================================================
 
-    pub type ILinkDecorations;
+    #[wasm_bindgen(js_name = "ILinkDecorations")]
+    pub type LinkDecorations;
+
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> LinkDecorations;
 
     #[wasm_bindgen(method, setter, js_name = "pointerCursor")]
-    pub fn set_pointer_cursor(this: &IBufferNamespace, val: bool);
+    pub fn set_pointer_cursor(this: &BufferNamespace, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "underline")]
-    pub fn set_underline(this: &IBufferNamespace, val: bool);
+    pub fn set_underline(this: &BufferNamespace, val: bool);
 
     // ========================================================================
 
-    pub type IBufferRange;
+    #[wasm_bindgen(js_name = "IBufferRange")]
+    pub type BufferRange;
+
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> BufferRange;
 
     #[wasm_bindgen(method, getter, js_name = "start")]
-    pub fn get_start(this: &IBufferRange) -> IBufferCellPosition;
+    pub fn get_start(this: &BufferRange) -> BufferCellPosition;
 
     #[wasm_bindgen(method, getter, js_name = "end")]
-    pub fn get_end(this: &IBufferRange) -> IBufferCellPosition;
+    pub fn get_end(this: &BufferRange) -> BufferCellPosition;
 
     // ========================================================================
 
-    pub type IBufferCellPosition;
+    #[wasm_bindgen(js_name = "IBufferCellPosition")]
+    pub type BufferCellPosition;
 
     #[wasm_bindgen(method, getter, js_name = "x")]
-    pub fn get_x(this: &IBufferCellPosition) -> u32;
+    pub fn get_x(this: &BufferCellPosition) -> u32;
 
     #[wasm_bindgen(method, getter, js_name = "y")]
-    pub fn get_y(this: &IBufferCellPosition) -> u32;
+    pub fn get_y(this: &BufferCellPosition) -> u32;
 
     // ========================================================================
 
-    pub type IBuffer;
+    #[wasm_bindgen(js_name = "IBuffer")]
+    pub type Buffer;
 
     #[wasm_bindgen(method, getter, js_name = "type")]
-    pub fn get_type(this: &IBuffer) -> BufferType;
+    pub fn get_type(this: &Buffer) -> BufferType;
 
     #[wasm_bindgen(method, getter, js_name = "cursorY")]
-    pub fn get_cursor_y(this: &IBuffer) -> u32;
+    pub fn get_cursor_y(this: &Buffer) -> u32;
 
     #[wasm_bindgen(method, getter, js_name = "cursorX")]
-    pub fn get_cursor_x(this: &IBuffer) -> u32;
+    pub fn get_cursor_x(this: &Buffer) -> u32;
 
     #[wasm_bindgen(method, getter, js_name = "viewportY")]
-    pub fn get_viewport_y(this: &IBuffer) -> u32;
+    pub fn get_viewport_y(this: &Buffer) -> u32;
 
     #[wasm_bindgen(method, getter, js_name = "baseY")]
-    pub fn get_base_y(this: &IBuffer) -> u32;
+    pub fn get_base_y(this: &Buffer) -> u32;
 
     #[wasm_bindgen(method, getter, js_name = "length")]
-    pub fn get_length(this: &IBuffer) -> u32;
+    pub fn get_length(this: &Buffer) -> u32;
 
     #[wasm_bindgen(method, js_name = "getLine")]
-    pub fn get_line(this: &IBuffer, y: u32) -> IBufferLine;
+    pub fn get_line(this: &Buffer, y: u32) -> BufferLine;
 
     #[wasm_bindgen(method, js_name = "getNullCell")]
-    pub fn get_null_cell(this: &IBuffer) -> IBufferCell;
+    pub fn get_null_cell(this: &Buffer) -> BufferCell;
 
     // ========================================================================
 
-    pub type IBufferNamespace;
+    #[wasm_bindgen(js_name = "IBufferNamespace")]
+    pub type BufferNamespace;
 
     #[wasm_bindgen(method, getter, js_name = "active")]
-    pub fn get_active(this: &IBufferNamespace) -> IBuffer;
+    pub fn get_active(this: &BufferNamespace) -> Buffer;
 
     #[wasm_bindgen(method, getter, js_name = "normal")]
-    pub fn get_normal(this: &IBufferNamespace) -> IBuffer;
+    pub fn get_normal(this: &BufferNamespace) -> Buffer;
 
     #[wasm_bindgen(method, getter, js_name = "alternate")]
-    pub fn get_alternate(this: &IBufferNamespace) -> IBuffer;
+    pub fn get_alternate(this: &BufferNamespace) -> Buffer;
 
     #[wasm_bindgen(method, setter, js_name = "onBufferChange")]
-    pub fn set_on_buffer_change(this: &IBufferNamespace, val: Function);
+    pub fn set_on_buffer_change(this: &BufferNamespace, val: Function);
 
     // ========================================================================
 
-    pub type IBufferLine;
+    #[wasm_bindgen(js_name = "IBufferLine")]
+    pub type BufferLine;
 
     #[wasm_bindgen(method, getter, js_name = "isWrapped")]
-    pub fn is_wrapped(this: &IBufferLine) -> bool;
+    pub fn is_wrapped(this: &BufferLine) -> bool;
 
     #[wasm_bindgen(method, getter, js_name = "length")]
-    pub fn get_length(this: &IBufferLine) -> u32;
+    pub fn get_length(this: &BufferLine) -> u32;
 
     #[wasm_bindgen(method, js_name = "getCell")]
-    pub fn get_cell(this: &IBufferLine, x: u32, cell: Option<IBufferCell>) -> Option<IBufferCell>;
+    pub fn get_cell(this: &BufferLine, x: u32, cell: Option<BufferCell>) -> Option<BufferCell>;
 
     #[wasm_bindgen(method, js_name = "translateToString")]
     pub fn translate_to_String(
-        this: &IBufferLine,
+        this: &BufferLine,
         trim_right: bool,
         start_column: Option<u32>,
         end_column: Option<u32>,
@@ -872,137 +957,148 @@ extern "C" {
 
     // ========================================================================
 
-    pub type IBufferCell;
+    #[wasm_bindgen(js_name = "IBufferCell")]
+    pub type BufferCell;
 
     #[wasm_bindgen(method, js_name = "getWidth")]
-    pub fn get_width(this: &IBufferCell) -> u32;
+    pub fn get_width(this: &BufferCell) -> u32;
 
     #[wasm_bindgen(method, js_name = "getChars")]
-    pub fn get_chars(this: &IBufferCell) -> String;
+    pub fn get_chars(this: &BufferCell) -> String;
 
     #[wasm_bindgen(method, js_name = "getCode")]
-    pub fn get_code(this: &IBufferCell) -> u32;
+    pub fn get_code(this: &BufferCell) -> u32;
 
     #[wasm_bindgen(method, js_name = "getFgColorMode")]
-    pub fn get_fg_color_mode(this: &IBufferCell) -> u32;
+    pub fn get_fg_color_mode(this: &BufferCell) -> u32;
 
     #[wasm_bindgen(method, js_name = "getBgColorMode")]
-    pub fn get_bg_color_mode(this: &IBufferCell) -> u32;
+    pub fn get_bg_color_mode(this: &BufferCell) -> u32;
 
     #[wasm_bindgen(method, js_name = "getFgColor")]
-    pub fn get_fg_color(this: &IBufferCell) -> u32;
+    pub fn get_fg_color(this: &BufferCell) -> u32;
 
     #[wasm_bindgen(method, js_name = "getBgColor")]
-    pub fn bg_color(this: &IBufferCell) -> u32;
+    pub fn bg_color(this: &BufferCell) -> u32;
 
     #[wasm_bindgen(method, js_name = "isBold")]
-    pub fn is_bold(this: &IBufferCell) -> u32;
+    pub fn is_bold(this: &BufferCell) -> u32;
 
     #[wasm_bindgen(method, js_name = "isItalic")]
-    pub fn is_italic(this: &IBufferCell) -> u32;
+    pub fn is_italic(this: &BufferCell) -> u32;
 
     #[wasm_bindgen(method, js_name = "isDim")]
-    pub fn is_dim(this: &IBufferCell) -> u32;
+    pub fn is_dim(this: &BufferCell) -> u32;
 
     #[wasm_bindgen(method, js_name = "isUnderline")]
-    pub fn is_underline(this: &IBufferCell) -> u32;
+    pub fn is_underline(this: &BufferCell) -> u32;
 
     #[wasm_bindgen(method, js_name = "isBlink")]
-    pub fn is_blink(this: &IBufferCell) -> u32;
+    pub fn is_blink(this: &BufferCell) -> u32;
 
     #[wasm_bindgen(method, js_name = "isInverse")]
-    pub fn is_inverse(this: &IBufferCell) -> u32;
+    pub fn is_inverse(this: &BufferCell) -> u32;
 
     #[wasm_bindgen(method, js_name = "isInvisible")]
-    pub fn is_invisible(this: &IBufferCell) -> u32;
+    pub fn is_invisible(this: &BufferCell) -> u32;
 
     #[wasm_bindgen(method, js_name = "isFgRGB")]
-    pub fn is_fg_rgb(this: &IBufferCell) -> bool;
+    pub fn is_fg_rgb(this: &BufferCell) -> bool;
 
     #[wasm_bindgen(method, js_name = "isBgRGB")]
-    pub fn is_bg_rgb(this: &IBufferCell) -> bool;
+    pub fn is_bg_rgb(this: &BufferCell) -> bool;
 
     #[wasm_bindgen(method, js_name = "isFgPalette")]
-    pub fn is_fg_palette(this: &IBufferCell) -> bool;
+    pub fn is_fg_palette(this: &BufferCell) -> bool;
 
     #[wasm_bindgen(method, js_name = "isBgPalette")]
-    pub fn is_bg_palette(this: &IBufferCell) -> bool;
+    pub fn is_bg_palette(this: &BufferCell) -> bool;
 
     #[wasm_bindgen(method, js_name = "isFgDefault")]
-    pub fn is_fg_default(this: &IBufferCell) -> bool;
+    pub fn is_fg_default(this: &BufferCell) -> bool;
 
     #[wasm_bindgen(method, js_name = "isBgDefault")]
-    pub fn is_bg_default(this: &IBufferCell) -> bool;
+    pub fn is_bg_default(this: &BufferCell) -> bool;
 
     #[wasm_bindgen(method, js_name = "isAttributeDefault")]
-    pub fn is_attribute_default(this: &IBufferCell) -> bool;
+    pub fn is_attribute_default(this: &BufferCell) -> bool;
 
     // ========================================================================
 
-    pub type IFunctionIdentifier;
+    #[wasm_bindgen(js_name = "IFunctionIdentifier")]
+    pub type FunctionIdentifier;
+
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> FunctionIdentifier;
 
     #[wasm_bindgen(method, setter, js_name = "prefix")]
-    pub fn set_prefix(this: &IFunctionIdentifier, val: String);
+    pub fn set_prefix(this: &FunctionIdentifier, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "intermediates")]
-    pub fn set_intermediates(this: &IFunctionIdentifier, val: String);
+    pub fn set_intermediates(this: &FunctionIdentifier, val: String);
 
     #[wasm_bindgen(method, setter, js_name = "final")]
-    pub fn set_final(this: &IFunctionIdentifier, val: String);
+    pub fn set_final(this: &FunctionIdentifier, val: String);
 
     // ========================================================================
 
-    pub type IParser;
+    #[wasm_bindgen(js_name = "IParser")]
+    pub type Parser;
 
     #[wasm_bindgen(method, js_name = "registerCsiHandler")]
     pub fn register_csi_handler(
-        this: &IFunctionIdentifier,
-        id: IFunctionIdentifier,
+        this: &FunctionIdentifier,
+        id: FunctionIdentifier,
         callback: &Function, // (params: (u32 | u32[])[]) => bool
-    ) -> IDisposable;
+    ) -> Disposable;
 
     #[wasm_bindgen(method, js_name = "registerDcsHandler")]
     pub fn register_dcs_handler(
-        this: &IFunctionIdentifier,
-        id: IFunctionIdentifier,
+        this: &FunctionIdentifier,
+        id: FunctionIdentifier,
         callback: &Function, // (data: String, param: (u32 | u32[])[]) => bool
-    ) -> IDisposable;
+    ) -> Disposable;
 
     #[wasm_bindgen(method, js_name = "registerEscHandler")]
     pub fn register_esc_handler(
-        this: &IFunctionIdentifier,
-        id: IFunctionIdentifier,
+        this: &FunctionIdentifier,
+        id: FunctionIdentifier,
         handler: &Function, // () => bool
-    ) -> IDisposable;
+    ) -> Disposable;
 
     #[wasm_bindgen(method, js_name = "registerOscHandler")]
     pub fn register_osc_handler(
-        this: &IFunctionIdentifier,
+        this: &FunctionIdentifier,
         ident: u32,
         callback: &Function, // (data: String) => bool
-    ) -> IDisposable;
+    ) -> Disposable;
 
     // ========================================================================
 
-    pub type IUnicodeVersionProvider;
+    #[wasm_bindgen(js_name = "IUnicodeVersionProvider")]
+    pub type UnicodeVersionProvider;
+
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> UnicodeVersionProvider;
 
     #[wasm_bindgen(method, getter, js_name = "version")]
-    pub fn get_version(this: &IUnicodeVersionProvider) -> String;
+    pub fn get_version(this: &UnicodeVersionProvider) -> String;
 
     #[wasm_bindgen(method, js_name = "wcwidth")]
-    pub fn wcwidth(this: &IViewportRangePosition, codepoint: u32) -> WcWidth;
+    pub fn wcwidth(this: &ViewportRangePosition, codepoint: u32) -> WcWidth;
 
     // ========================================================================
 
-    pub type IUnicodeHandling;
+    #[wasm_bindgen(js_name = "IUnicodeHandling")]
+    pub type UnicodeHandling;
 
     #[wasm_bindgen(method, js_name = "register")]
-    pub fn register(this: &IUnicodeHandling, provider: IUnicodeVersionProvider);
+    pub fn register(this: &UnicodeHandling, provider: UnicodeVersionProvider);
 
     #[wasm_bindgen(method, getter, js_name = "versions")]
-    pub fn get_versions(this: &IUnicodeHandling) -> Box<[JsValue]>; // Box<[String]>
+    pub fn get_versions(this: &UnicodeHandling) -> Box<[JsValue]>; // Box<[String]>
 
     #[wasm_bindgen(method, getter, js_name = "activeVersion")]
-    pub fn get_active_version(this: &IUnicodeHandling) -> String;
+    pub fn get_active_version(this: &UnicodeHandling) -> String;
 
 }

@@ -1,17 +1,17 @@
-use crate::{ILinkMatcherOptions, ITerminalAddon, Terminal};
+use crate::{LinkMatcherOptions, TerminalAddon, Terminal};
 use js_sys::Function;
 use wasm_bindgen::prelude::*;
 
 #[wasm_bindgen(module = "xterm-addon-web-links")]
 extern "C" {
 
-    #[wasm_bindgen(extends = ITerminalAddon)]
+    #[wasm_bindgen(extends = TerminalAddon)]
     pub type WebLinksAddon;
 
     #[wasm_bindgen(constructor)]
     pub fn new(
         handler: Option<&Function>, // (event: MouseEvent, uri: string) => void
-        options: Option<&ILinkMatcherOptions>,
+        options: Option<&LinkMatcherOptions>,
         useLinkProvider: Option<bool>,
     ) -> WebLinksAddon;
 
