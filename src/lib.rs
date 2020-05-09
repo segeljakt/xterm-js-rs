@@ -1,8 +1,6 @@
-mod utils;
-
 use js_sys::{Function, RegExp};
 use wasm_bindgen::prelude::*;
-use web_sys::{HtmlElement, HtmlTextAreaElement, MouseEvent, KeyboardEvent};
+use web_sys::{HtmlElement, HtmlTextAreaElement, KeyboardEvent, MouseEvent, WebSocket};
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
@@ -12,131 +10,131 @@ static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
 #[wasm_bindgen]
 pub enum BellStyle {
-    pub None = "none",
-    pub Sound = "sound",
-    pub Visual = "visual",
-    pub Both = "both",
+    None = "none",
+    Sound = "sound",
+    Visual = "visual",
+    Both = "both",
 }
 
 #[wasm_bindgen]
 pub enum CursorStyle {
-    pub Block = "block",
-    pub Underline = "underline",
-    pub Bar = "bar",
+    Block = "block",
+    Underline = "underline",
+    Bar = "bar",
 }
 
 #[wasm_bindgen]
 pub enum FastScrollModifier {
-    pub Alt = "alt",
-    pub Ctrl = "ctrl",
-    pub Shift = "shift",
+    Alt = "alt",
+    Ctrl = "ctrl",
+    Shift = "shift",
 }
 
 #[wasm_bindgen]
 pub enum FontWeight {
-    pub Normal = "normal",
-    pub Bold = "bold",
-    pub W100 = "100",
-    pub W200 = "200",
-    pub W300 = "300",
-    pub W400 = "400",
-    pub W500 = "500",
-    pub W600 = "600",
-    pub W700 = "700",
-    pub W800 = "800",
-    pub W900 = "900",
+    Normal = "normal",
+    Bold = "bold",
+    W100 = "100",
+    W200 = "200",
+    W300 = "300",
+    W400 = "400",
+    W500 = "500",
+    W600 = "600",
+    W700 = "700",
+    W800 = "800",
+    W900 = "900",
 }
 #[wasm_bindgen]
 pub enum LogLevel {
-    pub Debug = "debug",
-    pub Info = "info",
-    pub Warn = "warn",
-    pub Error = "error",
-    pub Off = "off",
+    Debug = "debug",
+    Info = "info",
+    Warn = "warn",
+    Error = "error",
+    Off = "off",
 }
 
 #[wasm_bindgen]
 pub enum RendererType {
-    pub Dom = "dom",
-    pub Canvas = "canvas",
+    Dom = "dom",
+    Canvas = "canvas",
 }
 
 #[wasm_bindgen]
 pub enum BufferType {
-    pub Normal = "normal",
-    pub Alternate = "alternate",
+    Normal = "normal",
+    Alternate = "alternate",
 }
 
 #[wasm_bindgen]
 pub enum WcWidth {
-    pub Width0 = 0,
-    pub Width1 = 1,
-    pub Width2 = 2,
+    Width0 = 0,
+    Width1 = 1,
+    Width2 = 2,
 }
 
 #[wasm_bindgen]
 pub enum StringOptionKey {
-    pub BellSound = "bellSound",
-    pub BellStyle = "bellStyle",
-    pub CursorStyle = "cursorStyle",
-    pub FontFamily = "fontFamily",
-    pub FontWeight = "fontWeight",
-    pub FontWeightBold = "fontWeightBold",
-    pub LogLevel = "logLevel",
-    pub RendererType = "rendererType",
-    pub TermName = "termName",
-    pub WordSeparator = "wordSeparator",
+    BellSound = "bellSound",
+    BellStyle = "bellStyle",
+    CursorStyle = "cursorStyle",
+    FontFamily = "fontFamily",
+    FontWeight = "fontWeight",
+    FontWeightBold = "fontWeightBold",
+    LogLevel = "logLevel",
+    RendererType = "rendererType",
+    TermName = "termName",
+    WordSeparator = "wordSeparator",
 }
 
 #[wasm_bindgen]
 pub enum BoolOptionKey {
-    pub AllowTransparency = "allowTransparency",
-    pub CancelEvents = "cancelEvents",
-    pub ConvertEol = "convertEol",
-    pub CursorBlink = "cursorBlink",
-    pub DisableStdin = "disableStdin",
-    pub MacOptionIsMeta = "macOptionIsMeta",
-    pub RightClickSelectsWord = "rightClickSelectsWord",
-    pub PopOnBell = "popOnBell",
-    pub VisualBell = "visualBell",
-    pub WindowsMode = "windowsMode",
+    AllowTransparency = "allowTransparency",
+    CancelEvents = "cancelEvents",
+    ConvertEol = "convertEol",
+    CursorBlink = "cursorBlink",
+    DisableStdin = "disableStdin",
+    MacOptionIsMeta = "macOptionIsMeta",
+    RightClickSelectsWord = "rightClickSelectsWord",
+    PopOnBell = "popOnBell",
+    VisualBell = "visualBell",
+    WindowsMode = "windowsMode",
 }
 
 #[wasm_bindgen]
 pub enum NumberOptionKey {
-    pub Cols = "cols",
-    pub FontSize = "fontSize",
-    pub LetterSpacing = "letterSpacing",
-    pub LineHeight = "lineHeight",
-    pub Rows = "rows",
-    pub TabStopWidth = "tabStopWidth",
-    pub Scrollback = "scrollback",
+    Cols = "cols",
+    FontSize = "fontSize",
+    LetterSpacing = "letterSpacing",
+    LineHeight = "lineHeight",
+    Rows = "rows",
+    TabStopWidth = "tabStopWidth",
+    Scrollback = "scrollback",
 }
 
 #[wasm_bindgen]
 pub enum FontWeightKey {
-    pub FontWeight = "fontWeight",
-    pub FontWeightBold = "fontWeightBold",
+    FontWeight = "fontWeight",
+    FontWeightBold = "fontWeightBold",
 }
 
 #[wasm_bindgen]
 pub enum LogLevelKey {
-    pub LogLevel = "logLevel",
+    LogLevel = "logLevel",
 }
 
 #[wasm_bindgen]
 pub enum BellStyleKey {
-    pub BellStyle = "bellStyle",
+    BellStyle = "bellStyle",
 }
 
 #[wasm_bindgen]
 pub enum CursorStyleKey {
-    pub CursorStyle = "cursorStyle",
+    CursorStyle = "cursorStyle",
 }
 
 #[wasm_bindgen]
 pub enum ThemeKey {
-    pub Theme = "theme",
+    Theme = "theme",
 }
 
 #[wasm_bindgen(module = "xterm")]
@@ -352,6 +350,7 @@ extern "C" {
 
     // ========================================================================
 
+    #[wasm_bindgen(extends = IDisposable)]
     pub type IMarker;
 
     #[wasm_bindgen(method, getter, js_name = "id")]
@@ -445,6 +444,7 @@ extern "C" {
 
     // ========================================================================
 
+    #[wasm_bindgen(extends = IDisposable)]
     pub type Terminal;
 
     #[wasm_bindgen(method, getter, js_name = "element")]
@@ -473,16 +473,6 @@ extern "C" {
 
     #[wasm_bindgen(static_method_of = Terminal, js_name = "strings")]
     pub fn get_strings() -> ILocalizableStrings;
-
-    // Getter:
-    //  '<,'>s/: \(.*\);/(this: \&I) -> \1;/
-    //  '<,'>s/\(\s*\)\([a-zA-Z]\+\)/\1#[wasm_bindgen(method, getter, js_name = "\2")]\r\1fn get_\2/
-    // Setter:
-    //  '<,'>s/: \(.*\);/(this: \&I, val: \1);/
-    //  '<,'>s/\(\s*\)\([a-zA-Z]\+\)/\1#[wasm_bindgen(method, setter, js_name = "\2")]\r\1fn set_\2/
-    // Method:
-    //  '<,'>s/(\(.*\)): \(.*\);/(this: \&I, \1) ->\2;/
-    //  '<,'>s/\(\s*\)\([a-zA-Z]\+\)/\1#[wasm_bindgen(method, js_name = "\2")]\r\1fn set_\2/
 
     #[wasm_bindgen(constructor)]
     pub fn new(options: Option<ITerminalOptions>) -> Terminal;
@@ -718,6 +708,7 @@ extern "C" {
 
     // ========================================================================
 
+    #[wasm_bindgen(extends = IDisposable)]
     pub type ITerminalAddon;
 
     #[wasm_bindgen(method)]
@@ -1020,4 +1011,125 @@ extern "C" {
     #[wasm_bindgen(method, getter, js_name = "activeVersion")]
     pub fn get_active_version(this: &IUnicodeHandling) -> String;
 
+}
+
+#[wasm_bindgen(module = "xterm-addon-attach")]
+extern "C" {
+
+    pub type IAttachOptions;
+
+    #[wasm_bindgen(method, setter, js_name = "bidirectional")]
+    fn set_bidirectional(this: &IAttachOptions, val: bool);
+
+    // ========================================================================
+
+    #[wasm_bindgen(extends = ITerminalAddon)]
+    pub type AttachAddon;
+
+    #[wasm_bindgen(constructor)]
+    pub fn new(socket: WebSocket, options: Option<IAttachOptions>) -> AttachAddon;
+
+    #[wasm_bindgen(method, method, js_name = "activate")]
+    pub fn activate(this: &IAttachOptions, terminal: Terminal);
+
+    #[wasm_bindgen(method, method, js_name = "dispose")]
+    pub fn dispose(this: &IAttachOptions);
+}
+
+#[wasm_bindgen(module = "xterm-addon-fit")]
+extern "C" {
+
+    #[wasm_bindgen(extends = ITerminalAddon)]
+    pub type FitAddon;
+
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> FitAddon;
+
+    #[wasm_bindgen(method, method, js_name = "activate")]
+    pub fn activate(this: &FitAddon, terminal: &Terminal);
+
+    #[wasm_bindgen(method, method, js_name = "dispose")]
+    pub fn dispose(this: &FitAddon);
+
+    #[wasm_bindgen(method, method, js_name = "fit")]
+    pub fn fit(this: &FitAddon);
+
+    #[wasm_bindgen(method, method, js_name = "proposeDimensions")]
+    pub fn propose_dimensions(this: &FitAddon) -> ITerminalDimensions;
+
+    // ========================================================================
+
+    pub type ITerminalDimensions;
+
+    #[wasm_bindgen(method, setter, js_name = "rows")]
+    pub fn rows(this: &ITerminalDimensions) -> u32;
+
+    #[wasm_bindgen(method, setter, js_name = "cols")]
+    pub fn cols(this: &ITerminalDimensions) -> u32;
+}
+
+#[wasm_bindgen(module = "xterm-addon-search")]
+extern "C" {
+
+    pub type ISearchOptions;
+
+    #[wasm_bindgen(method, setter, js_name = "regex")]
+    fn set_regex(this: &ISearchOptions, val: bool);
+
+    #[wasm_bindgen(method, setter, js_name = "wholeWord")]
+    fn set_whole_word(this: &ISearchOptions, val: bool);
+
+    #[wasm_bindgen(method, setter, js_name = "caseSensitive")]
+    fn set_case_sensitive(this: &ISearchOptions, val: bool);
+
+    #[wasm_bindgen(method, setter, js_name = "incremental")]
+    fn set_incremental(this: &ISearchOptions, val: bool);
+
+    // ========================================================================
+
+    #[wasm_bindgen(extends = ITerminalAddon)]
+    pub type SearchAddon;
+
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> SearchAddon;
+
+    #[wasm_bindgen(method, method, js_name = "activate")]
+    pub fn activate(this: &SearchAddon, terminal: Terminal);
+
+    #[wasm_bindgen(method, method, js_name = "dispose")]
+    pub fn dispose(this: &SearchAddon);
+
+    #[wasm_bindgen(method, method, js_name = "findNext")]
+    pub fn find_next(
+        this: &SearchAddon,
+        term: String,
+        search_options: Option<ISearchOptions>,
+    ) -> bool;
+
+    #[wasm_bindgen(method, method, js_name = "findPrevious")]
+    pub fn find_previous(
+        this: &SearchAddon,
+        term: String,
+        search_options: Option<ISearchOptions>,
+    ) -> bool;
+}
+
+#[wasm_bindgen(module = "xterm-addon-web-links")]
+extern "C" {
+
+    #[wasm_bindgen(extends = ITerminalAddon)]
+    pub type WebLinksAddon;
+
+    #[wasm_bindgen(constructor)]
+    pub fn new(
+        handler: Option<&Function>, // (event: MouseEvent, uri: string) => void
+        options: Option<&ILinkMatcherOptions>,
+        useLinkProvider: Option<bool>,
+    ) -> WebLinksAddon;
+
+    #[wasm_bindgen(method, method, js_name = "activate")]
+    pub fn activate(this: &WebLinksAddon, terminal: &Terminal);
+
+    #[wasm_bindgen(method, method, js_name = "dispose")]
+    pub fn dispose(this: &WebLinksAddon);
 }

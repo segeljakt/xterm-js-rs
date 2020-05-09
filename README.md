@@ -67,3 +67,18 @@ wasm-pack publish
   for logging panic messages to the developer console.
 * [`wee_alloc`](https://github.com/rustwasm/wee_alloc), an allocator optimized
   for small code size.
+
+
+<!-- 
+Some useful regexps for generating wasm_bindgen code:
+
+Getter:
+ '<,'>s/: \(.*\);/(this: \&I) -> \1;/
+ '<,'>s/\(\s*\)\([a-zA-Z]\+\)/\1#[wasm_bindgen(method, getter, js_name = "\2")]\r\1fn get_\2/
+Setter:
+ '<,'>s/: \(.*\);/(this: \&I, val: \1);/
+ '<,'>s/\(\s*\)\([a-zA-Z]\+\)/\1#[wasm_bindgen(method, setter, js_name = "\2")]\r\1fn set_\2/
+Method:
+ '<,'>s/(\(.*\)): \(.*\);/(this: \&I, \1) ->\2;/
+ '<,'>s/\(\s*\)\([a-zA-Z]\+\)/\1#[wasm_bindgen(method, js_name = "\2")]\r\1fn set_\2/
+-->

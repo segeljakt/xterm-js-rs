@@ -18,6 +18,7 @@ features = [
     "HtmlTextAreaElement",
     "MouseEvent",
     "KeyboardEvent",
+    "WebSocket",
 ]
 
 [dependencies]
