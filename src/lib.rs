@@ -1,6 +1,8 @@
 use js_sys::{Function, RegExp};
 use wasm_bindgen::prelude::*;
-use web_sys::{HtmlElement, HtmlTextAreaElement, KeyboardEvent, MouseEvent, WebSocket};
+use web_sys::{
+    HtmlCanvasElement, HtmlElement, HtmlTextAreaElement, KeyboardEvent, MouseEvent, WebSocket,
+};
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
@@ -1132,4 +1134,78 @@ extern "C" {
 
     #[wasm_bindgen(method, method, js_name = "dispose")]
     pub fn dispose(this: &WebLinksAddon);
+}
+
+#[wasm_bindgen(module = "xterm-addon-ligatures")]
+extern "C" {
+
+    #[wasm_bindgen(extends = ITerminalAddon)]
+    pub type LigaturesAddon;
+
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> LigaturesAddon;
+
+    #[wasm_bindgen(method, method, js_name = "activate")]
+    pub fn activate(this: &LigaturesAddon, terminal: &Terminal);
+
+    #[wasm_bindgen(method, method, js_name = "dispose")]
+    pub fn dispose(this: &LigaturesAddon);
+
+}
+
+#[wasm_bindgen(module = "xterm-addon-serialize")]
+extern "C" {
+
+    #[wasm_bindgen(extends = ITerminalAddon)]
+    pub type SerializeAddon;
+
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> SerializeAddon;
+
+    #[wasm_bindgen(method, method, js_name = "activate")]
+    pub fn activate(this: &SerializeAddon, terminal: Terminal);
+
+    #[wasm_bindgen(method, method, js_name = "serialize")]
+    pub fn serialize(this: &SerializeAddon, rows: Option<u32>) -> String;
+
+    #[wasm_bindgen(method, method, js_name = "dispose")]
+    pub fn dispose(this: &SerializeAddon);
+
+}
+
+#[wasm_bindgen(module = "xterm-addon-unicode11")]
+extern "C" {
+
+    #[wasm_bindgen(extends = ITerminalAddon)]
+    pub type Unicode11Addon;
+
+    #[wasm_bindgen(constructor)]
+    pub fn new() -> Unicode11Addon;
+
+    #[wasm_bindgen(method, method, js_name = "activate")]
+    pub fn activate(this: &Unicode11Addon, terminal: Terminal);
+
+    #[wasm_bindgen(method, method, js_name = "dispose")]
+    pub fn dispose(this: &Unicode11Addon);
+
+}
+
+#[wasm_bindgen(module = "xterm-addon-webgl")]
+extern "C" {
+
+    #[wasm_bindgen(extends = ITerminalAddon)]
+    pub type WebglAddon;
+
+    #[wasm_bindgen(method, setter, js_name = "textureAtlas")]
+    pub fn set_texture_atlas(this: &WebglAddon, val: HtmlCanvasElement);
+
+    #[wasm_bindgen(constructor)]
+    pub fn new(preserve_drawing_buffer: Option<bool>) -> WebglAddon;
+
+    #[wasm_bindgen(method, method, js_name = "activate")]
+    pub fn activate(this: &WebglAddon, terminal: Terminal);
+
+    #[wasm_bindgen(method, method, js_name = "dispose")]
+    pub fn dispose(this: &WebglAddon);
+
 }

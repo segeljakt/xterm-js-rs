@@ -16,6 +16,7 @@ version = "0.3.39"
 features = [
     "HtmlElement",
     "HtmlTextAreaElement",
+    "HtmlCanvasElement",
     "MouseEvent",
     "KeyboardEvent",
     "WebSocket",
