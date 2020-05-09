@@ -1,4 +1,4 @@
-use crate::{TerminalAddon, Terminal};
+use crate::{Terminal, TerminalAddon};
 use wasm_bindgen::prelude::*;
 use web_sys::HtmlCanvasElement;
 

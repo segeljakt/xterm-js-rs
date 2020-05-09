@@ -1,5 +1,6 @@
-use crate::{TerminalAddon, Terminal};
+use crate::{Terminal, TerminalAddon};
 use wasm_bindgen::prelude::*;
+use wasm_bindgen::JsCast;
 use web_sys::WebSocket;
 
 #[wasm_bindgen(module = "xterm-addon-attach")]
@@ -27,6 +28,10 @@ extern "C" {
 }
 
 impl AttachOptions {
+    pub fn new() -> Self {
+        js_sys::Object::new().unchecked_into()
+    }
+
     pub fn with_bidirectional(&self, val: bool) -> &Self {
         self.set_bidirectional(val);
         self

@@ -138,9 +138,6 @@ extern "C" {
     #[wasm_bindgen(js_name = "ITerminalOptions")]
     pub type TerminalOptions;
 
-    #[wasm_bindgen(constructor)]
-    pub fn new() -> TerminalOptions;
-
     #[wasm_bindgen(method, setter, js_name = "allowTransparency")]
     pub fn set_allow_transparency(this: &TerminalOptions, val: bool);
 
@@ -248,9 +245,6 @@ extern "C" {
     #[wasm_bindgen(js_name = "ITheme")]
     pub type Theme;
 
-    #[wasm_bindgen(constructor)]
-    pub fn new() -> Theme;
-
     #[wasm_bindgen(method, setter, js_name = "foreground")]
     pub fn set_foreground(this: &Theme, val: String);
 
@@ -318,9 +312,6 @@ extern "C" {
 
     #[wasm_bindgen(js_name = "ILinkMatcherOptions")]
     pub type LinkMatcherOptions;
-
-    #[wasm_bindgen(constructor)]
-    pub fn new() -> LinkMatcherOptions;
 
     #[wasm_bindgen(method, setter, js_name = "matchIndex")]
     pub fn set_match_index(this: &LinkMatcherOptions, val: u32);
@@ -390,9 +381,6 @@ extern "C" {
 
     #[wasm_bindgen(js_name = "IWindowOptions")]
     pub type WindowOptions;
-
-    #[wasm_bindgen(constructor)]
-    pub fn new() -> WindowOptions;
 
     #[wasm_bindgen(method, setter, js_name = "restoreWin")]
     pub fn set_restore_win(this: &WindowOptions, val: bool);
@@ -812,9 +800,6 @@ extern "C" {
     #[wasm_bindgen(js_name = "ILinkProvider")]
     pub type LinkProvider;
 
-    #[wasm_bindgen(constructor)]
-    pub fn new() -> LinkProvider;
-
     #[wasm_bindgen(method, js_name = "provideLinks")]
     pub fn provide_links(
         this: &LinkProvider,
@@ -826,9 +811,6 @@ extern "C" {
 
     #[wasm_bindgen(js_name = "ILink")]
     pub type Link;
-
-    #[wasm_bindgen(constructor)]
-    pub fn new() -> Link;
 
     #[wasm_bindgen(method, setter, js_name = "range")]
     pub fn set_range(this: &Link, val: BufferRange);
@@ -853,9 +835,6 @@ extern "C" {
     #[wasm_bindgen(js_name = "ILinkDecorations")]
     pub type LinkDecorations;
 
-    #[wasm_bindgen(constructor)]
-    pub fn new() -> LinkDecorations;
-
     #[wasm_bindgen(method, setter, js_name = "pointerCursor")]
     pub fn set_pointer_cursor(this: &BufferNamespace, val: bool);
 
@@ -866,9 +845,6 @@ extern "C" {
 
     #[wasm_bindgen(js_name = "IBufferRange")]
     pub type BufferRange;
-
-    #[wasm_bindgen(constructor)]
-    pub fn new() -> BufferRange;
 
     #[wasm_bindgen(method, getter, js_name = "start")]
     pub fn get_start(this: &BufferRange) -> BufferCellPosition;
@@ -1028,9 +1004,6 @@ extern "C" {
     #[wasm_bindgen(js_name = "IFunctionIdentifier")]
     pub type FunctionIdentifier;
 
-    #[wasm_bindgen(constructor)]
-    pub fn new() -> FunctionIdentifier;
-
     #[wasm_bindgen(method, setter, js_name = "prefix")]
     pub fn set_prefix(this: &FunctionIdentifier, val: String);
 
@@ -1077,9 +1050,6 @@ extern "C" {
 
     #[wasm_bindgen(js_name = "IUnicodeVersionProvider")]
     pub type UnicodeVersionProvider;
-
-    #[wasm_bindgen(constructor)]
-    pub fn new() -> UnicodeVersionProvider;
 
     #[wasm_bindgen(method, getter, js_name = "version")]
     pub fn get_version(this: &UnicodeVersionProvider) -> String;

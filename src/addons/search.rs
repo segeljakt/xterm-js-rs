@@ -1,5 +1,6 @@
 use crate::{Terminal, TerminalAddon};
 use wasm_bindgen::prelude::*;
+use wasm_bindgen::JsCast;
 
 #[wasm_bindgen(module = "xterm-addon-search")]
 extern "C" {
@@ -49,6 +50,10 @@ extern "C" {
 }
 
 impl SearchOptions {
+    pub fn new() -> Self {
+        js_sys::Object::new().unchecked_into()
+    }
+
 
     pub fn with_regex(&self, val: bool) -> &Self {
         self.set_regex(val);

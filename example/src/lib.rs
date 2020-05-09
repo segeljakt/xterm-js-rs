@@ -2,7 +2,8 @@ mod utils;
 
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
-use xterm_js::*;
+use xterm_js::addons::fit::FitAddon;
+use xterm_js::{OnKeyEvent, Terminal, TerminalOptions};
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
 // allocator.
@@ -23,7 +24,7 @@ const KEY_L: u32 = 76;
 pub fn main() -> Result<(), JsValue> {
     utils::set_panic_hook();
 
-    let terminal: Terminal = Terminal::new(None);
+    let terminal: Terminal = Terminal::new(Some(TerminalOptions::new()));
 
     let elem = web_sys::window()
         .unwrap()

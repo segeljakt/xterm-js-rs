@@ -1,5 +1,6 @@
 use crate::{TerminalAddon, Terminal};
 use wasm_bindgen::prelude::*;
+use wasm_bindgen::JsCast;
 
 #[wasm_bindgen(module = "xterm-addon-fit")]
 extern "C" {
@@ -35,6 +36,10 @@ extern "C" {
 }
 
 impl TerminalDimensions {
+    pub fn new() -> Self {
+        js_sys::Object::new().unchecked_into()
+    }
+
     pub fn with_rows(&self, val: u32) -> &Self {
         self.set_rows(val);
         self

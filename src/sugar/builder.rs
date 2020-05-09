@@ -1,11 +1,13 @@
 // Builder patterns for all options
 use crate::*;
 use js_sys::Function;
+
 // Generate builder pattern:
 // %g/^.*wasm_bindgen/d
 // '<,'>s/\(.*\)set_\(.*\)(.*,\(.*\));/\1with_\2(\&self,\3) -> \&Self \{ self.set_\2(val); self \}/
 
 impl TerminalOptions {
+
     pub fn with_transparency(&self, val: bool) -> &Self {
         self.set_allow_transparency(val);
         self
