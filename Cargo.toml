@@ -1,8 +1,15 @@
 [package]
-name = "xterm-js"
-version = "0.1.0"
-authors = ["Klas Segeljakt <klasseg@kth.se>"]
-edition = "2018"
+name          = "xterm-js"
+version       = "0.1.0"
+documentation = "https://github.com/xtermjs/xterm.js/blob/master/typings/xterm.d.ts"
+homepage      = "https://github.com/segeljakt/xterm-js-rs/"
+repository    = "https://github.com/segeljakt/xterm-js-rs/"
+readme        = "README.md"
+description   = "Rust-WASM bindings for the xterm-js Javascript library"
+authors       = ["Klas Segeljakt <klasseg@kth.se>"]
+edition       = "2018"
+license       = "MIT"
+keywords      = ["cli", "web", "wasm", "javascript"]
 
 [lib]
 crate-type = ["cdylib", "rlib"]
