@@ -1,8 +1,8 @@
 
 # [Step 1]. Create a new branch named "gh-pages":
 #           
-#               git checkout -b "gh-pages"
-#               git push origin gh-pages
+#              $ git checkout -b "gh-pages"
+#              $ git push origin gh-pages
 #
 # [Step 2]. Go to https://github.com/<your-repository>/settings
 #           Scroll down and find GitHub Pages.
@@ -10,7 +10,7 @@
 #
 # [Step 3]. Generate an ssh-public-private key-pair on your local machine:
 #           
-#               ssh-keygen -t rsa -b 4096 -C "$(git config user.email)" -f gh-pages -N ""
+#              $ ssh-keygen -t rsa -b 4096 -C "$(git config user.email)" -f gh-pages -N ""
 #
 # [Step 4]. Then, copy the contents of the generated "gh-pages.pub" file and go to
 #           https://github.com/<your-repository>/settings/keys
