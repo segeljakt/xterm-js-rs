@@ -17,6 +17,16 @@
   <sub>Built with 🦀🕸 by <a href="https://rustwasm.github.io/">The Rust and WebAssembly Working Group</a></sub>
 </div>
 
+## Running the `xterm-js-rs` example
+
+From this directory, execute:
+
+```bash
+wasm-pack build && npm install && cd www && npm install && npm run start
+```
+
+Then, in your web browser, open [`http://localhost:8080/`](http://localhost:8080/) and have fun!
+
 ## About
 
 [**📚 Read this template tutorial! 📚**][template-docs]
