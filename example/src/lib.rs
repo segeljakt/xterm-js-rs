@@ -54,7 +54,7 @@ pub fn main() -> Result<(), JsValue> {
         .get_element_by_id("terminal")
         .unwrap();
 
-    terminal.writeln("Supported keys in this example: <Enter> <Backspace> <Left-Arrow> <Right-Arrow> <Backspace> <Ctrl-C> <Ctrl-L>");
+    terminal.writeln("Supported keys in this example: <Printable-Characters> <Enter> <Backspace> <Left-Arrow> <Right-Arrow> <Ctrl-C> <Ctrl-L>");
     terminal.open(elem.dyn_into()?);
     prompt(&terminal);
 
