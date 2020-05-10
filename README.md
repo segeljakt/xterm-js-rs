@@ -1,6 +1,10 @@
 <h1 align="center">🕸 xterm-js-rs 🦀</h1>
 
-This crate provides **Rust-WebAssembly** bindings for the [`xterm-js`](https://github.com/xtermjs/xterm.js) **Javascript** library and can be used to setup a custom web-based [**command-line-interface**](https://segeljakt.github.io/xterm-js-rs) for your crate, without much effort, running at the client-side.
+<p align="center">
+  <img src="https://raw.githubusercontent.com/segeljakt/assets/master/image.png">
+</p>
+
+This crate provides **Rust-WebAssembly** bindings to the [`xterm-js`](https://github.com/xtermjs/xterm.js) **Javascript** library and can be used to setup a custom web-based [**command-line-interface**](https://segeljakt.github.io/xterm-js-rs) for your crate, without much effort, running at the client-side.
 
 * 🎥 To see it running in action on **GitHub Pages**: https://segeljakt.github.io/xterm-js-rs.
 * 📝 Code for the example can be found [here](https://github.com/segeljakt/xterm-js-rs/blob/master/example/src/lib.rs).
