@@ -1,84 +1,19 @@
-<div align="center">
+<h1 align="center">xterm-js-rs</h1>
+This crate provides Rust-WebAssembly bindings for the [`xterm-js`](https://github.com/xtermjs/xterm.js/) Javascript library. The crate can be used to setup a custom website-command-line in the browser at the client-side without much effort.
 
-  <h1><code>wasm-pack-template</code></h1>
-
-  <strong>A template for kick starting a Rust and WebAssembly project using <a href="https://github.com/rustwasm/wasm-pack">wasm-pack</a>.</strong>
-
-  <p>
-    <a href="https://travis-ci.org/rustwasm/wasm-pack-template"><img src="https://img.shields.io/travis/rustwasm/wasm-pack-template.svg?style=flat-square" alt="Build Status" /></a>
-  </p>
-
-  <h3>
-    <a href="https://rustwasm.github.io/docs/wasm-pack/tutorials/npm-browser-packages/index.html">Tutorial</a>
-    <span> | </span>
-    <a href="https://discordapp.com/channels/442252698964721669/443151097398296587">Chat</a>
-  </h3>
-
-  <sub>Built with 🦀🕸 by <a href="https://rustwasm.github.io/">The Rust and WebAssembly Working Group</a></sub>
-</div>
-
-## About
-
-[**📚 Read this template tutorial! 📚**][template-docs]
-
-This template is designed for compiling Rust libraries into WebAssembly and
-publishing the resulting package to NPM.
-
-Be sure to check out [other `wasm-pack` tutorials online][tutorials] for other
-templates and usages of `wasm-pack`.
-
-[tutorials]: https://rustwasm.github.io/docs/wasm-pack/tutorials/index.html
-[template-docs]: https://rustwasm.github.io/docs/wasm-pack/tutorials/npm-browser-packages/index.html
-
-## 🚴 Usage
-
-### 🐑 Use `cargo generate` to Clone this Template
-
-[Learn more about `cargo generate` here.](https://github.com/ashleygwilliams/cargo-generate)
-
-```
-cargo generate --git https://github.com/rustwasm/wasm-pack-template.git --name my-project
-cd my-project
-```
-
-### 🛠️ Build with `wasm-pack build`
-
-```
-wasm-pack build
-```
-
-### 🔬 Test in Headless Browsers with `wasm-pack test`
-
-```
-wasm-pack test --headless --firefox
-```
-
-### 🎁 Publish to NPM with `wasm-pack publish`
-
-```
-wasm-pack publish
-```
-
-## 🔋 Batteries Included
-
-* [`wasm-bindgen`](https://github.com/rustwasm/wasm-bindgen) for communicating
-  between WebAssembly and JavaScript.
-* [`console_error_panic_hook`](https://github.com/rustwasm/console_error_panic_hook)
-  for logging panic messages to the developer console.
-* [`wee_alloc`](https://github.com/rustwasm/wee_alloc), an allocator optimized
-  for small code size.
-
-
-<!-- 
-Some useful regexps for generating wasm_bindgen code:
-
-Getter:
- '<,'>s/: \(.*\);/(this: \&I) -> \1;/
- '<,'>s/\(\s*\)\([a-zA-Z]\+\)/\1#[wasm_bindgen(method, getter, js_name = "\2")]\r\1fn get_\2/
-Setter:
- '<,'>s/: \(.*\);/(this: \&I, val: \1);/
- '<,'>s/\(\s*\)\([a-zA-Z]\+\)/\1#[wasm_bindgen(method, setter, js_name = "\2")]\r\1fn set_\2/
-Method:
- '<,'>s/(\(.*\)): \(.*\);/(this: \&I, \1) ->\2;/
- '<,'>s/\(\s*\)\([a-zA-Z]\+\)/\1#[wasm_bindgen(method, js_name = "\2")]\r\1fn set_\2/
--->
+* To see it running in action: https://segeljakt.github.io/xterm-js-rs/.
+* Code for the example can be found [here](https://github.com/segeljakt/xterm-js-rs/tree/master/example).
+* The GitHub Actions workflow for automatically deploying the website can be found [here](https://github.com/segeljakt/xterm-js-rs/blob/master/.github/workflows/gh-pages.yml).
+* For an overview of what the bindings do, checkout the official [API](https://github.com/xtermjs/xterm.js/blob/master/typings/xterm.d.ts).
+* Conditionally, [addons](https://github.com/xtermjs/xterm.js/tree/master/addons) of `xterm-js` can be activated by compiling this crate with the corresponding feature enabled:
+  - `xterm-addon-attach`
+  - `xterm-addon-fit`
+  - `xterm-addon-ligatures`
+  - `xterm-addon-search`
+  - `xterm-addon-serialize`
+  - `xterm-addon-unicode11`
+  - `xterm-addon-web-links`
+  - `xterm-addon-webgl`
+* If your npm-crate depends on this crate, then it must contain a `package.json` in the root directory and `www` directory which specifies the dependencies to the `xterm-js` library. As in the example:
+  - [xterm-js-rs/example/package.json](https://github.com/segeljakt/xterm-js-rs/blob/c5c1a2ab5ba605c83d517330b41a90f658b2c123/example/package.json#L3-L4)
+  - [xterm-js-rs/example/www/package.json](https://github.com/segeljakt/xterm-js-rs/blob/c5c1a2ab5ba605c83d517330b41a90f658b2c123/example/www/package.json#L31-L32)
