@@ -18,3 +18,4 @@ This crate provides **Rust-WebAssembly** bindings for the [`xterm-js`](https://g
 * ⚠️ If your npm-crate depends on this crate, then it must contain a `package.json` in the root directory and `www` directory which specifies the dependencies to the `xterm-js` library. As in the example:
   - [example/package.json](https://github.com/segeljakt/xterm-js-rs/blob/c5c1a2ab5ba605c83d517330b41a90f658b2c123/example/package.json#L3-L4)
   - [example/www/package.json](https://github.com/segeljakt/xterm-js-rs/blob/c5c1a2ab5ba605c83d517330b41a90f658b2c123/example/www/package.json#L31-L32)
+* 👷 Help with adding support for `xterm-js-rs` in existing Rust-REPL-libraries ([linefeed](https://github.com/murarth/linefeed), [liner](https://github.com/redox-os/liner), [rustyline](https://github.com/kkawakam/rustyline), [termwiz](https://github.com/wez/wezterm/tree/master/termwiz)) is greatly appreciated!
