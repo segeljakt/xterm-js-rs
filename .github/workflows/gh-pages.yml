@@ -48,12 +48,14 @@ jobs:
       - name: Setup wasm-pack
         run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
 
-      - name: Build example
-        run: wasm-pack build
-        working-directory: ./example
-
       - name: Setup node
         uses: actions/setup-node@v1
+
+      - name: Build example
+        run: |
+          wasm-pack build
+          npm install
+        working-directory: ./example
 
       - name: Compile website
         run: |
