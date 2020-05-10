@@ -1,0 +1,70 @@
+
+# [Step 1]. Create a new branch named "gh-pages":
+#           
+#               git checkout -b "gh-pages"
+#               git push origin gh-pages
+#
+# [Step 2]. Go to https://github.com/<your-repository>/settings
+#           Scroll down and find GitHub Pages.
+#           Click "Source" and make sure the "gh-pages branch" option is selected.
+#
+# [Step 3]. Generate an ssh-public-private key-pair on your local machine:
+#           
+#               ssh-keygen -t rsa -b 4096 -C "$(git config user.email)" -f gh-pages -N ""
+#
+# [Step 4]. Then, copy the contents of the generated "gh-pages.pub" file and go to
+#           https://github.com/segeljakt/xterm-js-rs/settings/keys
+#           Paste the public key and name it "Public key of ACTIONS_DEPLOY_KEY"
+#
+# [Step 5]. Then, copy the contents of the generated "gh-pages" file and go to
+#           https://github.com/segeljakt/xterm-js-rs/settings/keys
+#           Paste the private key and name it "ACTIONS_DEPLOY_KEY"
+#
+# [Done] At this point, you should have a branch "gh-pages" two keys in your repository.
+#        Whenever you make a push to the master branch, a fresh new website will be deployed at
+#        https://<your-name>.github.io/<your-repository-name>/
+
+name: GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache cargo dependencies
+        uses: actions/cache@v1
+        with:
+          key: ${{ runner.os }}-wasm-${{ hashFiles('**/Cargo.lock') }}
+          path: target
+          restore-keys: |
+            ${{ runner.os }}-wasm-
+            
+      - name: Setup wasm-pack
+        run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
+
+      - name: Build example
+        run: wasm-pack build
+        working-directory: ./example
+
+      - name: Setup node
+        uses: actions/setup-node@v1
+
+      - name: Compile website
+        run: |
+          npm install
+          npm run build
+        working-directory: ./example/www
+
+      - name: Deploy to gh-pages
+        if: success()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./example/www/dist
+          force_orphan: true
