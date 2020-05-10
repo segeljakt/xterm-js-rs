@@ -3,28 +3,28 @@ mod utils;
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
 use xterm_js::addons::fit::FitAddon;
-use xterm_js::{BellStyle, OnKeyEvent, Terminal, TerminalOptions, Theme};
+use xterm_js::{OnKeyEvent, Terminal, TerminalOptions, Theme};
 
 #[cfg(feature = "wee_alloc")]
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
 
+const PROMPT: &str = "$ ";
+
 fn prompt(term: &Terminal) {
-    term.write("\r\n$ ");
+    term.writeln("");
+    term.write(PROMPT);
 }
 
 // Keyboard keys
 // https://notes.burke.libbey.me/ansi-escape-codes/
 const KEY_ENTER: u32 = 13;
 const KEY_BACKSPACE: u32 = 8;
-const KEY_UP_ARROW: u32 = 38;
-const KEY_DOWN_ARROW: u32 = 40;
 const KEY_LEFT_ARROW: u32 = 37;
 const KEY_RIGHT_ARROW: u32 = 39;
+const KEY_C: u32 = 67;
 const KEY_L: u32 = 76;
 
-const CURSOR_UP: &str = "\x1b[A";
-const CURSOR_DOWN: &str = "\x1b[B";
 const CURSOR_LEFT: &str = "\x1b[D";
 const CURSOR_RIGHT: &str = "\x1b[C";
 
@@ -58,8 +58,10 @@ pub fn main() -> Result<(), JsValue> {
     prompt(&terminal);
 
     let mut line = String::new();
+    let mut cursor_col = 0;
 
     let term: Terminal = terminal.clone().dyn_into()?;
+
     let callback = Closure::wrap(Box::new(move |e: OnKeyEvent| {
         let event = e.dom_event();
         match event.key_code() {
@@ -68,24 +70,40 @@ pub fn main() -> Result<(), JsValue> {
                     term.writeln("");
                     term.writeln(&format!("You entered {} characters '{}'", line.len(), line));
                     line.clear();
+                    cursor_col = 0;
                 }
                 prompt(&term);
             }
             KEY_BACKSPACE => {
-                if !line.is_empty() {
+                if cursor_col > 0 {
                     term.write("\u{0008} \u{0008}");
                     line.pop();
+                    cursor_col -= 1;
                 }
             }
-            KEY_UP_ARROW => term.write(CURSOR_UP),
-            KEY_DOWN_ARROW => term.write(CURSOR_DOWN),
-            KEY_LEFT_ARROW => term.write(CURSOR_LEFT),
-            KEY_RIGHT_ARROW => term.write(CURSOR_RIGHT),
+            KEY_LEFT_ARROW => {
+                if cursor_col > 0 {
+                    term.write(CURSOR_LEFT);
+                    cursor_col -= 1;
+                }
+            }
+            KEY_RIGHT_ARROW => {
+                if cursor_col < line.len() {
+                    term.write(CURSOR_RIGHT);
+                    cursor_col += 1;
+                }
+            }
             KEY_L if event.ctrl_key() => term.clear(),
+            KEY_C if event.ctrl_key() => {
+                prompt(&term);
+                line.clear();
+                cursor_col = 0;
+            }
             _ => {
                 if !event.alt_key() && !event.alt_key() && !event.ctrl_key() && !event.meta_key() {
                     term.write(&event.key());
                     line.push_str(&e.key());
+                    cursor_col += 1;
                 }
             }
         }
