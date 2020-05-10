@@ -3,7 +3,7 @@
 This crate provides **Rust-WebAssembly** bindings for the [`xterm-js`](https://github.com/xtermjs/xterm.js) **Javascript** library and can be used to setup a custom web-based [**command-line-interface**](https://segeljakt.github.io/xterm-js-rs) for your crate, without much effort, running at the client-side.
 
 * 🎥 To see it running in action on **GitHub Pages**: https://segeljakt.github.io/xterm-js-rs.
-* 📝 Code for the example can be found [here](https://www.github.com/segeljakt/xterm-js-rs/tree/master/example).
+* 📝 Code for the example can be found [here](https://github.com/segeljakt/xterm-js-rs/blob/master/example/src/lib.rs).
 * 🚀 The **GitHub Actions** workflow for automatically deploying the website to **GitHub Pages** can be found [here](https://github.com/segeljakt/xterm-js-rs/blob/master/.github/workflows/gh-pages.yml) along with instructions to setup **GitHub Pages**.
 * 🔬 For an overview of what the bindings do, checkout the official [API](https://github.com/xtermjs/xterm.js/blob/master/typings/xterm.d.ts).
 * 🎚 Conditionally, [addons](https://github.com/xtermjs/xterm.js/tree/master/addons) of `xterm-js` can be activated by compiling this crate with the corresponding features enabled:

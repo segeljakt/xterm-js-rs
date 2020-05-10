@@ -36,7 +36,15 @@ pub fn main() -> Result<(), JsValue> {
         TerminalOptions::new()
             .with_rows(50)
             .with_cursor_blink(true)
+            .with_cursor_width(10)
             .with_font_size(20)
+            .with_draw_bold_text_in_bright_colors(true)
+            .with_right_click_selects_word(true)
+            .with_theme(
+                Theme::new()
+                    .with_foreground("#98FB98")
+                    .with_background("#000000"),
+            ),
     );
 
     let elem = web_sys::window()
