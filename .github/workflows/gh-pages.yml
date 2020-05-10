@@ -1,7 +1,7 @@
 
 # [Step 1]. Create a new branch named "gh-pages":
 #           
-#              $ git checkout -b "gh-pages"
+#              $ git checkout -b gh-pages
 #              $ git push origin gh-pages
 #
 # [Step 2]. Go to https://github.com/<your-repository>/settings
