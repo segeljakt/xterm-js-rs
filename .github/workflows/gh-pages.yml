@@ -13,11 +13,11 @@
 #               ssh-keygen -t rsa -b 4096 -C "$(git config user.email)" -f gh-pages -N ""
 #
 # [Step 4]. Then, copy the contents of the generated "gh-pages.pub" file and go to
-#           https://github.com/segeljakt/xterm-js-rs/settings/keys
+#           https://github.com/<your-repository>/settings/keys
 #           Paste the public key and name it "Public key of ACTIONS_DEPLOY_KEY"
 #
 # [Step 5]. Then, copy the contents of the generated "gh-pages" file and go to
-#           https://github.com/segeljakt/xterm-js-rs/settings/keys
+#           https://github.com/<your-repository>/settings/secrets
 #           Paste the private key and name it "ACTIONS_DEPLOY_KEY"
 #
 # [Done] At this point, you should have a branch "gh-pages" two keys in your repository.
