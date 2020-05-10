@@ -6,7 +6,7 @@
   </a>
 </p>
 
-This crate provides **Rust-WebAssembly** bindings to the [`xterm-js`](https://github.com/xtermjs/xterm.js) **Javascript** library and can be used to setup a custom web-based [**command-line-interface**](https://segeljakt.github.io/xterm-js-rs) for your crate, without much effort, running at the client-side.
+This crate provides **Rust-WebAssembly** bindings to the [`xterm-js`](https://github.com/xtermjs/xterm.js) **Javascript** library and can be used to setup a custom web-based [**command-line**](https://segeljakt.github.io/xterm-js-rs) for your crate, without much effort, running at the client-side.
 
 * 🎥 To see it running in action on **GitHub Pages**: https://segeljakt.github.io/xterm-js-rs.
 * 📝 Code for the example can be found [here](https://github.com/segeljakt/xterm-js-rs/blob/master/example/src/lib.rs).
