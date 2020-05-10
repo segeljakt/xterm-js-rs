@@ -2,8 +2,8 @@ mod utils;
 
 use wasm_bindgen::prelude::*;
 use wasm_bindgen::JsCast;
-use xterm_js::addons::fit::FitAddon;
-use xterm_js::{OnKeyEvent, Terminal, TerminalOptions, Theme};
+use xterm_js_rs::addons::fit::FitAddon;
+use xterm_js_rs::{OnKeyEvent, Terminal, TerminalOptions, Theme};
 
 #[cfg(feature = "wee_alloc")]
 #[global_allocator]
