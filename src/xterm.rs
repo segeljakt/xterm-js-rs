@@ -142,7 +142,7 @@ extern "C" {
     pub fn set_allow_transparency(this: &TerminalOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "bellSound")]
-    pub fn set_bell_sound(this: &TerminalOptions, val: String);
+    pub fn set_bell_sound(this: &TerminalOptions, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "bellStyle")]
     pub fn set_bell_style(this: &TerminalOptions, val: BellStyle);
@@ -178,7 +178,7 @@ extern "C" {
     pub fn set_font_size(this: &TerminalOptions, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "fontFamily")]
-    pub fn set_font_family(this: &TerminalOptions, val: String);
+    pub fn set_font_family(this: &TerminalOptions, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "fontWeight")]
     pub fn set_font_weight(this: &TerminalOptions, val: FontWeight);
@@ -229,16 +229,16 @@ extern "C" {
     pub fn set_tab_stop_width(this: &TerminalOptions, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "theme")]
-    pub fn set_theme(this: &TerminalOptions, val: Theme);
+    pub fn set_theme(this: &TerminalOptions, val: &Theme);
 
     #[wasm_bindgen(method, setter, js_name = "windowsMode")]
     pub fn set_windows_mode(this: &TerminalOptions, val: bool);
 
     #[wasm_bindgen(method, setter, js_name = "wordSeparator")]
-    pub fn set_word_separator(this: &TerminalOptions, val: String);
+    pub fn set_word_separator(this: &TerminalOptions, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "windowOptions")]
-    pub fn set_window_options(this: &TerminalOptions, val: WindowOptions);
+    pub fn set_window_options(this: &TerminalOptions, val: &WindowOptions);
 
     // ========================================================================
 
@@ -246,67 +246,67 @@ extern "C" {
     pub type Theme;
 
     #[wasm_bindgen(method, setter, js_name = "foreground")]
-    pub fn set_foreground(this: &Theme, val: String);
+    pub fn set_foreground(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "background")]
-    pub fn set_background(this: &Theme, val: String);
+    pub fn set_background(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "cursor")]
-    pub fn set_cursor(this: &Theme, val: String);
+    pub fn set_cursor(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "cursorAccent")]
-    pub fn set_cursor_accent(this: &Theme, val: String);
+    pub fn set_cursor_accent(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "selection")]
-    pub fn set_selection(this: &Theme, val: String);
+    pub fn set_selection(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "black")]
-    pub fn set_black(this: &Theme, val: String);
+    pub fn set_black(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "red")]
-    pub fn set_red(this: &Theme, val: String);
+    pub fn set_red(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "green")]
-    pub fn set_green(this: &Theme, val: String);
+    pub fn set_green(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "yellow")]
-    pub fn set_yellow(this: &Theme, val: String);
+    pub fn set_yellow(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "blue")]
-    pub fn set_blue(this: &Theme, val: String);
+    pub fn set_blue(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "magenta")]
-    pub fn set_magenta(this: &Theme, val: String);
+    pub fn set_magenta(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "cyan")]
-    pub fn set_cyan(this: &Theme, val: String);
+    pub fn set_cyan(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "white")]
-    pub fn set_white(this: &Theme, val: String);
+    pub fn set_white(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "brightBlack")]
-    pub fn set_bright_black(this: &Theme, val: String);
+    pub fn set_bright_black(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "brightRed")]
-    pub fn set_bright_red(this: &Theme, val: String);
+    pub fn set_bright_red(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "brightGreen")]
-    pub fn set_bright_green(this: &Theme, val: String);
+    pub fn set_bright_green(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "brightYellow")]
-    pub fn set_bright_yellow(this: &Theme, val: String);
+    pub fn set_bright_yellow(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "brightBlue")]
-    pub fn set_bright_blue(this: &Theme, val: String);
+    pub fn set_bright_blue(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "brightMagenta")]
-    pub fn set_bright_magenta(this: &Theme, val: String);
+    pub fn set_bright_magenta(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "brightCyan")]
-    pub fn set_bright_cyan(this: &Theme, val: String);
+    pub fn set_bright_cyan(this: &Theme, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "brightWhite")]
-    pub fn set_bright_white(this: &Theme, val: String);
+    pub fn set_bright_white(this: &Theme, val: &str);
 
     // ========================================================================
 
@@ -317,23 +317,23 @@ extern "C" {
     pub fn set_match_index(this: &LinkMatcherOptions, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "validationCallback")]
-    pub fn set_validation_callback(this: &LinkMatcherOptions, val: Function);
-    // (uri: String, callback: (is_valid: bool) => void) => void;
+    pub fn set_validation_callback(this: &LinkMatcherOptions, val: &Function);
+    // (uri: &str, callback: (is_valid: bool) => void) => void;
 
     #[wasm_bindgen(method, setter, js_name = "tooltipCallback")]
-    pub fn set_tooltip_callback(this: &LinkMatcherOptions, val: Function);
-    // (event: MouseEvent, uri: String, location: ViewportRange) => bool | void;
+    pub fn set_tooltip_callback(this: &LinkMatcherOptions, val: &Function);
+    // (event: MouseEvent, uri: &str, location: ViewportRange) => bool | void;
 
     #[wasm_bindgen(method, setter, js_name = "leaveCallback")]
-    pub fn set_leave_callback(this: &LinkMatcherOptions, val: Function);
+    pub fn set_leave_callback(this: &LinkMatcherOptions, val: &Function);
     // () => void;
 
     #[wasm_bindgen(method, setter, js_name = "priority")]
     pub fn set_priority(this: &LinkMatcherOptions, val: u32);
 
     #[wasm_bindgen(method, setter, js_name = "willLinkActivate")]
-    pub fn set_will_link_activate(this: &LinkMatcherOptions, val: Function);
-    // (event: MouseEvent, uri: String) => bool;
+    pub fn set_will_link_activate(this: &LinkMatcherOptions, val: &Function);
+    // (event: MouseEvent, uri: &str) => bool;
 
     // ========================================================================
 
@@ -372,10 +372,10 @@ extern "C" {
     pub type LocalizableStrings;
 
     #[wasm_bindgen(method, setter, js_name = "promptLabel")]
-    pub fn set_prompt_label(this: &LocalizableStrings, val: String);
+    pub fn set_prompt_label(this: &LocalizableStrings, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "tooMuchOutput")]
-    pub fn set_too_much_output(this: &LocalizableStrings, val: String);
+    pub fn set_too_much_output(this: &LocalizableStrings, val: &str);
 
     // ========================================================================
 
@@ -454,7 +454,7 @@ extern "C" {
     pub type Terminal;
 
     #[wasm_bindgen(constructor)]
-    pub fn new(options: Option<TerminalOptions>) -> Terminal;
+    pub fn construct(options: Option<&TerminalOptions>) -> Terminal;
 
     #[wasm_bindgen(method, getter, js_name = "element")]
     pub fn get_element(this: &Terminal) -> HtmlElement;
@@ -488,7 +488,7 @@ extern "C" {
     #[wasm_bindgen(method, js_name = "onBinary")]
     pub fn on_binary(
         this: &Terminal,
-        f: &Function, // Event<String>
+        f: &Function, // Event<&str>
     ) -> Disposable;
 
     //---------------
@@ -504,7 +504,7 @@ extern "C" {
     #[wasm_bindgen(method, js_name = "onData")]
     pub fn on_data(
         this: &Terminal,
-        f: &Function, // Event<String>
+        f: &Function, // Event<&str>
     ) -> Disposable;
 
     //---------------
@@ -520,7 +520,7 @@ extern "C" {
     #[wasm_bindgen(method, js_name = "onKey")]
     pub fn on_key(
         this: &Terminal,
-        f: &Function, // Event<{key: String, dom_event: KeyboardEvent}>
+        f: &Function, // Event<{key: &str, dom_event: KeyboardEvent}>
     ) -> Disposable;
 
     //---------------
@@ -576,7 +576,7 @@ extern "C" {
     #[wasm_bindgen(method, js_name = "onTitleChange")]
     pub fn on_title_change(
         this: &Terminal,
-        f: &Function, // Event<String>
+        f: &Function, // Event<&str>
     ) -> Disposable;
 
     //---------------
@@ -603,7 +603,7 @@ extern "C" {
     pub fn register_link_matcher(
         this: &Terminal,
         regex: RegExp,
-        handler: &Function, // (event: MouseEvent, uri: String) => void
+        handler: &Function, // (event: MouseEvent, uri: &str) => void
         options: Option<LinkMatcherOptions>,
     ) -> u32;
 
@@ -616,7 +616,7 @@ extern "C" {
     #[wasm_bindgen(method, js_name = "registerCharacterJoiner")]
     pub fn register_character_joiner(
         this: &Terminal,
-        handler: &Function, // (text: String) => [u32, u32][]
+        handler: &Function, // (text: &str) => [u32, u32][]
     ) -> u32;
 
     #[wasm_bindgen(method, js_name = "deregisterCharacterJoiner")]
@@ -671,28 +671,28 @@ extern "C" {
     pub fn clear(this: &Terminal);
 
     #[wasm_bindgen(method, js_name = "write")]
-    pub fn write(
+    pub fn write_with_callback(
         this: &Terminal,
-        data: String,                // String | uint8array
+        data: &str,                  // &str | uint8array
         callback: Option<&Function>, // () => void
     );
 
     #[wasm_bindgen(method, js_name = "writeln")]
-    pub fn writeln(
+    pub fn writeln_with_callback(
         this: &Terminal,
-        data: String,                // String | uint8array
+        data: &str,                  // &str | uint8array
         callback: Option<&Function>, // () => void
     );
 
     #[wasm_bindgen(method, js_name = "writeUtf")]
-    pub fn write_utf8(
+    pub fn write_utf8_with_callback(
         this: &Terminal,
-        data: Box<[u8]>,             // String | uint8array
+        data: Box<[u8]>,             // &str | uint8array
         callback: Option<&Function>, // () => void
     );
 
     #[wasm_bindgen(method, js_name = "paste")]
-    pub fn paste(this: &Terminal, data: String);
+    pub fn paste(this: &Terminal, data: &str);
 
     #[wasm_bindgen(method, js_name = "getOption")]
     pub fn get_string_option(this: &Terminal, key: StringOptionKey) -> String;
@@ -704,10 +704,10 @@ extern "C" {
     pub fn get_number_option(this: &Terminal, key: NumberOptionKey) -> u32;
 
     #[wasm_bindgen(method, js_name = "getOption")]
-    pub fn get_any_option(this: &Terminal, key: String) -> JsValue;
+    pub fn get_any_option(this: &Terminal, key: &str) -> JsValue;
 
     #[wasm_bindgen(method, js_name = "setOption")]
-    pub fn set_string_option(this: &Terminal, key: StringOptionKey, value: String);
+    pub fn set_string_option(this: &Terminal, key: StringOptionKey, value: &str);
 
     #[wasm_bindgen(method, js_name = "setOption")]
     pub fn set_font_option(this: &Terminal, key: FontWeightKey, value: FontWeight);
@@ -731,7 +731,7 @@ extern "C" {
     pub fn set_theme_option(this: &Terminal, key: ThemeKey, value: Theme);
 
     #[wasm_bindgen(method, js_name = "setOption")]
-    pub fn set_any_option(this: &Terminal, key: String, value: JsValue);
+    pub fn set_any_option(this: &Terminal, key: &str, value: JsValue);
 
     #[wasm_bindgen(method, js_name = "refresh")]
     pub fn refresh(this: &Terminal, start: u32, end: u32);
@@ -779,10 +779,10 @@ extern "C" {
     pub fn get_end(this: &ViewportRange) -> ViewportRangePosition;
 
     #[wasm_bindgen(method, setter, js_name = "start")]
-    pub fn set_start(this: &ViewportRange, val: ViewportRangePosition);
+    pub fn set_start(this: &ViewportRange, val: &ViewportRangePosition);
 
     #[wasm_bindgen(method, setter, js_name = "end")]
-    pub fn set_end(this: &ViewportRange, val: ViewportRangePosition);
+    pub fn set_end(this: &ViewportRange, val: &ViewportRangePosition);
 
     // ========================================================================
 
@@ -813,22 +813,22 @@ extern "C" {
     pub type Link;
 
     #[wasm_bindgen(method, setter, js_name = "range")]
-    pub fn set_range(this: &Link, val: BufferRange);
+    pub fn set_range(this: &Link, val: &BufferRange);
 
     #[wasm_bindgen(method, setter, js_name = "text")]
-    pub fn set_text(this: &Link, val: String);
+    pub fn set_text(this: &Link, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "decorations")]
-    pub fn set_decorations(this: &Link, val: LinkDecorations);
+    pub fn set_decorations(this: &Link, val: &LinkDecorations);
 
     #[wasm_bindgen(method, js_name = "activate")]
-    pub fn activate(this: &Link, event: MouseEvent, text: String);
+    pub fn activate(this: &Link, event: MouseEvent, text: &str);
 
     #[wasm_bindgen(method, js_name = "hover")]
-    pub fn hover(this: &Link, event: MouseEvent, text: String);
+    pub fn hover(this: &Link, event: MouseEvent, text: &str);
 
     #[wasm_bindgen(method, js_name = "leave")]
-    pub fn leave(this: &Link, event: MouseEvent, text: String);
+    pub fn leave(this: &Link, event: MouseEvent, text: &str);
 
     // ========================================================================
 
@@ -907,7 +907,7 @@ extern "C" {
     pub fn get_alternate(this: &BufferNamespace) -> Buffer;
 
     #[wasm_bindgen(method, setter, js_name = "onBufferChange")]
-    pub fn set_on_buffer_change(this: &BufferNamespace, val: Function);
+    pub fn set_on_buffer_change(this: &BufferNamespace, val: &Function);
 
     // ========================================================================
 
@@ -1005,13 +1005,13 @@ extern "C" {
     pub type FunctionIdentifier;
 
     #[wasm_bindgen(method, setter, js_name = "prefix")]
-    pub fn set_prefix(this: &FunctionIdentifier, val: String);
+    pub fn set_prefix(this: &FunctionIdentifier, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "intermediates")]
-    pub fn set_intermediates(this: &FunctionIdentifier, val: String);
+    pub fn set_intermediates(this: &FunctionIdentifier, val: &str);
 
     #[wasm_bindgen(method, setter, js_name = "final")]
-    pub fn set_final(this: &FunctionIdentifier, val: String);
+    pub fn set_final(this: &FunctionIdentifier, val: &str);
 
     // ========================================================================
 
@@ -1029,7 +1029,7 @@ extern "C" {
     pub fn register_dcs_handler(
         this: &FunctionIdentifier,
         id: FunctionIdentifier,
-        callback: &Function, // (data: String, param: (u32 | u32[])[]) => bool
+        callback: &Function, // (data: &str, param: (u32 | u32[])[]) => bool
     ) -> Disposable;
 
     #[wasm_bindgen(method, js_name = "registerEscHandler")]
@@ -1043,7 +1043,7 @@ extern "C" {
     pub fn register_osc_handler(
         this: &FunctionIdentifier,
         ident: u32,
-        callback: &Function, // (data: String) => bool
+        callback: &Function, // (data: &str) => bool
     ) -> Disposable;
 
     // ========================================================================
@@ -1066,7 +1066,7 @@ extern "C" {
     pub fn register(this: &UnicodeHandling, provider: UnicodeVersionProvider);
 
     #[wasm_bindgen(method, getter, js_name = "versions")]
-    pub fn get_versions(this: &UnicodeHandling) -> Box<[JsValue]>; // Box<[String]>
+    pub fn get_versions(this: &UnicodeHandling) -> Box<[JsValue]>; // Box<[&str]>
 
     #[wasm_bindgen(method, getter, js_name = "activeVersion")]
     pub fn get_active_version(this: &UnicodeHandling) -> String;

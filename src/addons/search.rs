@@ -37,14 +37,14 @@ extern "C" {
     #[wasm_bindgen(method, method, js_name = "findNext")]
     pub fn find_next(
         this: &SearchAddon,
-        term: String,
+        term: &str,
         search_options: Option<SearchOptions>,
     ) -> bool;
 
     #[wasm_bindgen(method, method, js_name = "findPrevious")]
     pub fn find_previous(
         this: &SearchAddon,
-        term: String,
+        term: &str,
         search_options: Option<SearchOptions>,
     ) -> bool;
 }

@@ -9,7 +9,7 @@ extern "C" {
     pub type WebglAddon;
 
     #[wasm_bindgen(method, setter, js_name = "textureAtlas")]
-    pub fn set_texture_atlas(this: &WebglAddon, val: HtmlCanvasElement);
+    pub fn set_texture_atlas(this: &WebglAddon, val: &HtmlCanvasElement);
 
     #[wasm_bindgen(constructor)]
     pub fn new(preserve_drawing_buffer: Option<bool>) -> WebglAddon;

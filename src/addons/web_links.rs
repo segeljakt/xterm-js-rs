@@ -10,7 +10,7 @@ extern "C" {
 
     #[wasm_bindgen(constructor)]
     pub fn new(
-        handler: Option<&Function>, // (event: MouseEvent, uri: string) => void
+        handler: Option<&Function>, // (event: MouseEvent, uri: &str) => void
         options: Option<&LinkMatcherOptions>,
         useLinkProvider: Option<bool>,
     ) -> WebLinksAddon;

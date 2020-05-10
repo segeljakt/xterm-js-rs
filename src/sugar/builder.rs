@@ -3,17 +3,15 @@ use crate::*;
 use js_sys::Function;
 
 // Generate builder pattern:
-// %g/^.*wasm_bindgen/d
 // '<,'>s/\(.*\)set_\(.*\)(.*,\(.*\));/\1with_\2(\&self,\3) -> \&Self \{ self.set_\2(val); self \}/
 
 impl TerminalOptions {
-
     pub fn with_transparency(&self, val: bool) -> &Self {
         self.set_allow_transparency(val);
         self
     }
 
-    pub fn with_bell_sound(&self, val: String) -> &Self {
+    pub fn with_bell_sound(&self, val: &str) -> &Self {
         self.set_bell_sound(val);
         self
     }
@@ -73,7 +71,7 @@ impl TerminalOptions {
         self
     }
 
-    pub fn with_font_family(&self, val: String) -> &Self {
+    pub fn with_font_family(&self, val: &str) -> &Self {
         self.set_font_family(val);
         self
     }
@@ -158,7 +156,7 @@ impl TerminalOptions {
         self
     }
 
-    pub fn with_theme(&self, val: Theme) -> &Self {
+    pub fn with_theme(&self, val: &Theme) -> &Self {
         self.set_theme(val);
         self
     }
@@ -168,13 +166,120 @@ impl TerminalOptions {
         self
     }
 
-    pub fn with_word_separator(&self, val: String) -> &Self {
+    pub fn with_word_separator(&self, val: &str) -> &Self {
         self.set_word_separator(val);
         self
     }
 
-    pub fn with_window_options(&self, val: WindowOptions) -> &Self {
+    pub fn with_window_options(&self, val: &WindowOptions) -> &Self {
         self.set_window_options(val);
+        self
+    }
+}
+
+impl Theme {
+    pub fn with_foreground(&self, val: &str) -> &Self {
+        self.set_foreground(val);
+        self
+    }
+
+    pub fn with_background(&self, val: &str) -> &Self {
+        self.set_background(val);
+        self
+    }
+
+    pub fn with_cursor(&self, val: &str) -> &Self {
+        self.set_cursor(val);
+        self
+    }
+
+    pub fn with_cursor_accent(&self, val: &str) -> &Self {
+        self.set_cursor_accent(val);
+        self
+    }
+
+    pub fn with_selection(&self, val: &str) -> &Self {
+        self.set_selection(val);
+        self
+    }
+
+    pub fn with_black(&self, val: &str) -> &Self {
+        self.set_black(val);
+        self
+    }
+
+    pub fn with_red(&self, val: &str) -> &Self {
+        self.set_red(val);
+        self
+    }
+
+    pub fn with_green(&self, val: &str) -> &Self {
+        self.set_green(val);
+        self
+    }
+
+    pub fn with_yellow(&self, val: &str) -> &Self {
+        self.set_yellow(val);
+        self
+    }
+
+    pub fn with_blue(&self, val: &str) -> &Self {
+        self.set_blue(val);
+        self
+    }
+
+    pub fn with_magenta(&self, val: &str) -> &Self {
+        self.set_magenta(val);
+        self
+    }
+
+    pub fn with_cyan(&self, val: &str) -> &Self {
+        self.set_cyan(val);
+        self
+    }
+
+    pub fn with_white(&self, val: &str) -> &Self {
+        self.set_white(val);
+        self
+    }
+
+    pub fn with_bright_black(&self, val: &str) -> &Self {
+        self.set_bright_black(val);
+        self
+    }
+
+    pub fn with_bright_red(&self, val: &str) -> &Self {
+        self.set_bright_red(val);
+        self
+    }
+
+    pub fn with_bright_green(&self, val: &str) -> &Self {
+        self.set_bright_green(val);
+        self
+    }
+
+    pub fn with_bright_yellow(&self, val: &str) -> &Self {
+        self.set_bright_yellow(val);
+        self
+    }
+
+    pub fn with_bright_blue(&self, val: &str) -> &Self {
+        self.set_bright_blue(val);
+        self
+    }
+
+    pub fn with_bright_magenta(&self, val: &str) -> &Self {
+        self.set_bright_magenta(val);
+        self
+    }
+
+    pub fn with_bright_cyan(&self, val: &str) -> &Self {
+        self.set_bright_cyan(val);
+        self
+    }
+
+    pub fn with_bright_white(&self, val: &str) -> &Self {
+        self.set_bright_white(val);
         self
     }
 }
@@ -185,17 +290,17 @@ impl LinkMatcherOptions {
         self
     }
 
-    pub fn with_validation_callback(&self, val: Function) -> &Self {
+    pub fn with_validation_callback(&self, val: &Function) -> &Self {
         self.set_validation_callback(val);
         self
     }
 
-    pub fn with_tooltip_callback(&self, val: Function) -> &Self {
+    pub fn with_tooltip_callback(&self, val: &Function) -> &Self {
         self.set_tooltip_callback(val);
         self
     }
 
-    pub fn with_leave_callback(&self, val: Function) -> &Self {
+    pub fn with_leave_callback(&self, val: &Function) -> &Self {
         self.set_leave_callback(val);
         self
     }
@@ -205,7 +310,7 @@ impl LinkMatcherOptions {
         self
     }
 
-    pub fn with_will_link_activate(&self, val: Function) -> &Self {
+    pub fn with_will_link_activate(&self, val: &Function) -> &Self {
         self.set_will_link_activate(val);
         self
     }

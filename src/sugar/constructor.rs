@@ -1,8 +1,20 @@
 use crate::{
     BufferRange, FunctionIdentifier, Link, LinkDecorations, LinkMatcherOptions, LinkProvider,
-    TerminalOptions, Theme, UnicodeVersionProvider, WindowOptions,
+    Terminal, TerminalOptions, Theme, UnicodeVersionProvider, WindowOptions,
 };
 use wasm_bindgen::JsCast;
+
+impl Terminal {
+    pub fn new(options: &TerminalOptions) -> Self {
+        Terminal::construct(Some(&options))
+    }
+}
+
+impl Default for Terminal {
+    fn default() -> Self {
+        Terminal::construct(None)
+    }
+}
 
 impl TerminalOptions {
     pub fn new() -> Self {
