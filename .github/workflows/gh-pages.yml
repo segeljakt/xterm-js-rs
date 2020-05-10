@@ -20,7 +20,7 @@
 #           https://github.com/<your-repository>/settings/secrets
 #           Paste the private key and name it "ACTIONS_DEPLOY_KEY"
 #
-# [Done] At this point, you should have a branch "gh-pages" two keys in your repository.
+# [Done] At this point, you should have a branch "gh-pages" and two keys in your repository.
 #        Whenever you make a push to the master branch, a fresh new website will be deployed at
 #        https://<your-name>.github.io/<your-repository-name>/
 #        Feel free to delete the generated ssh-keys from your local machine.
