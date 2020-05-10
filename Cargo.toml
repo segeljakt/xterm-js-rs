@@ -1,5 +1,5 @@
 [package]
-name          = "xterm-js"
+name          = "xterm-js-rs"
 version       = "0.1.0"
 documentation = "https://github.com/xtermjs/xterm.js/blob/master/typings/xterm.d.ts"
 homepage      = "https://github.com/segeljakt/xterm-js-rs/"
