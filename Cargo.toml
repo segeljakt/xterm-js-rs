@@ -1,6 +1,6 @@
 [package]
 name          = "xterm-js-rs"
-version       = "0.1.1"
+version       = "0.1.2"
 homepage      = "https://github.com/segeljakt/xterm-js-rs/"
 repository    = "https://github.com/segeljakt/xterm-js-rs/"
 readme        = "README.md"
